@@ -15,3 +15,11 @@ React - For UI Rendering.
 Redux - For State Management.
 
 Bootstrap - For Look & Feel.
+
+Husky - For Commit Hocks.
+
+Circle CI - For CI/CD.
+
+Stanadard Version - For Commit Lint.
+
+YAMAL Lint - For Circle CI YAML Lint.
