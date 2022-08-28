@@ -3,8 +3,14 @@ import './App.css';
 function App() {
   return (
     <div>
-      Hello World!
+      <div>
+        Hello World!
+      </div>
+      <div>
+        Integrated CI
+      </div>
     </div>
+    
   );
 }
 
