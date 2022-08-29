@@ -29,7 +29,7 @@
     "eject": "react-scripts eject",
     "configlint": "yamllint .circleci/config.yml",
     "lint": "eslint . --ext .js,.tsx",
-    "coverage": "react-scripts test --coverage",
+    "coverage": "react-scripts test --watchAll --coverage",
     "prettier": "prettier src --check",
     "lint-staged": "lint-staged --config lint-staged.js"
   },
