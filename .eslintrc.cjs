@@ -1,6 +1,10 @@
 // eslint-disable-next-line no-undef
 module.exports = {
-    extends: ['eslint:recommended', 'plugin:@typescript-eslint/recommended'],
+    env: {
+        "browser": true,
+        "es6": true
+    },
+    extends: ['eslint:all'],
     parser: '@typescript-eslint/parser',
     plugins: ['@typescript-eslint', 'jest'],
     root: true,
@@ -13,4 +17,10 @@ module.exports = {
           extends: ['plugin:jest/recommended'],
         },
     ],
+    rules: {
+        'no-console': 'error',
+        'object-curly-spacing': ['error', 'always'],
+        'quotes': ['error'],
+        'require-unicode-regexp': 'off',
+    }
 };

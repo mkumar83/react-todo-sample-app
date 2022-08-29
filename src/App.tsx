@@ -1,17 +1,21 @@
-import './App.css';
+import "./App.css";
 
-function App() {
-  return (
-    <div>
-      <div>
-        Hello World!
-      </div>
-      <div>
-        Integrated CI
-      </div>
-    </div>
-    
-  );
+/* eslint-disable no-implicit-globals, strict */
+export default function App () {
+
+    return (
+
+        <div>
+            <div>
+            Hello World!
+            </div>
+            <div>
+            Integrated CI
+            </div>
+        </div>
+
+    );
+
 }
 
-export default App;
+
