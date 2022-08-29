@@ -2131,7 +2131,7 @@
   dependencies:
     "@types/istanbul-lib-report" "*"
 
-"@types/jest@*":
+"@types/jest@*", "@types/jest@^28.1.8":
   version "28.1.8"
   resolved "https://registry.yarnpkg.com/@types/jest/-/jest-28.1.8.tgz#6936409f3c9724ea431efd412ea0238a0f03b09b"
   integrity sha512-8TJkV++s7B6XqnDrzR1m/TT0A0h948Pnl/097veySPN67VRAgQ4gZ7n2KfJo2rVq6njQjdxU3GCCyDvAeuHoiw==
@@ -2159,7 +2159,7 @@
   resolved "https://repository.rnd.amadeus.net/api/npm/npm/@types/minimist/-/minimist-1.2.2.tgz#ee771e2ba4b3dc5b372935d549fd9617bf345b8c"
   integrity sha1-7nceK6Sz3Fs3KTXVSf2WF780W4w=
 
-"@types/node@*", "@types/node@>=12":
+"@types/node@*", "@types/node@>=12", "@types/node@^18.7.13":
   version "18.7.13"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-18.7.13.tgz#23e6c5168333480d454243378b69e861ab5c011a"
   integrity sha512-46yIhxSe5xEaJZXWdIBP7GU4HDTG8/eo0qd9atdiL+lFpA03y8KS+lkTN834TWJj5767GbWv4n/P6efyTFt1Dw==
@@ -2199,14 +2199,14 @@
   resolved "https://registry.yarnpkg.com/@types/range-parser/-/range-parser-1.2.4.tgz#cd667bcfdd025213aafb7ca5915a932590acdcdc"
   integrity sha512-EEhsLsD6UsDM1yFhAvy0Cjr6VwmpMWqFBCb9w07wVugF7w9nfajxLuVmngTIpgS6svCnm6Vaw+MZhoDCKnOfsw==
 
-"@types/react-dom@^18.0.0":
+"@types/react-dom@^18.0.0", "@types/react-dom@^18.0.6":
   version "18.0.6"
   resolved "https://registry.yarnpkg.com/@types/react-dom/-/react-dom-18.0.6.tgz#36652900024842b74607a17786b6662dd1e103a1"
   integrity sha512-/5OFZgfIPSwy+YuIBP/FgJnQnsxhZhjjrnxudMddeblOouIodEQ75X14Rr4wGSG/bknL+Omy9iWlLo1u/9GzAA==
   dependencies:
     "@types/react" "*"
 
-"@types/react@*":
+"@types/react@*", "@types/react@^18.0.17":
   version "18.0.17"
   resolved "https://registry.yarnpkg.com/@types/react/-/react-18.0.17.tgz#4583d9c322d67efe4b39a935d223edcc7050ccf4"
   integrity sha512-38ETy4tL+rn4uQQi7mB81G7V1g0u2ryquNmsVIOKUAEIDK+3CUjZ6rSRpdvS99dNBnkLFL83qfmtLacGOTIhwQ==
@@ -2297,7 +2297,7 @@
   dependencies:
     "@types/yargs-parser" "*"
 
-"@typescript-eslint/eslint-plugin@^5.5.0":
+"@typescript-eslint/eslint-plugin@^5.35.1", "@typescript-eslint/eslint-plugin@^5.5.0":
   version "5.35.1"
   resolved "https://registry.yarnpkg.com/@typescript-eslint/eslint-plugin/-/eslint-plugin-5.35.1.tgz#0d822bfea7469904dfc1bb8f13cabd362b967c93"
   integrity sha512-RBZZXZlI4XCY4Wzgy64vB+0slT9+yAPQRjj/HSaRwUot33xbDjF1oN9BLwOLTewoOI0jothIltZRe9uJCHf8gg==
@@ -2319,7 +2319,7 @@
   dependencies:
     "@typescript-eslint/utils" "5.35.1"
 
-"@typescript-eslint/parser@^5.5.0":
+"@typescript-eslint/parser@^5.35.1", "@typescript-eslint/parser@^5.5.0":
   version "5.35.1"
   resolved "https://registry.yarnpkg.com/@typescript-eslint/parser/-/parser-5.35.1.tgz#bf2ee2ebeaa0a0567213748243fb4eec2857f04f"
   integrity sha512-XL2TBTSrh3yWAsMYpKseBYTVpvudNf69rPOWXWVBI08My2JVT5jR66eTt4IgQFHA/giiKJW5dUD4x/ZviCKyGg==
@@ -2364,7 +2364,7 @@
     semver "^7.3.7"
     tsutils "^3.21.0"
 
-"@typescript-eslint/utils@5.35.1", "@typescript-eslint/utils@^5.13.0":
+"@typescript-eslint/utils@5.35.1", "@typescript-eslint/utils@^5.10.0", "@typescript-eslint/utils@^5.13.0":
   version "5.35.1"
   resolved "https://registry.yarnpkg.com/@typescript-eslint/utils/-/utils-5.35.1.tgz#ae1399afbfd6aa7d0ed1b7d941e9758d950250eb"
   integrity sha512-v6F8JNXgeBWI4pzZn36hT2HXXzoBBBJuOYvoQiaQaEEjdi5STzux3Yj8v7ODIpx36i/5s8TdzuQ54TPc5AITQQ==
@@ -4443,6 +4443,13 @@ eslint-plugin-jest@^25.3.0:
   dependencies:
     "@typescript-eslint/experimental-utils" "^5.0.0"
 
+eslint-plugin-jest@^27.0.1:
+  version "27.0.1"
+  resolved "https://repository.rnd.amadeus.net/api/npm/npm/eslint-plugin-jest/-/eslint-plugin-jest-27.0.1.tgz#3e67ee2051411540988c62075e8788702a1064da"
+  integrity sha1-PmfuIFFBFUCYjGIHXoeIcCoQZNo=
+  dependencies:
+    "@typescript-eslint/utils" "^5.10.0"
+
 eslint-plugin-jsx-a11y@^6.5.1:
   version "6.6.1"
   resolved "https://registry.yarnpkg.com/eslint-plugin-jsx-a11y/-/eslint-plugin-jsx-a11y-6.6.1.tgz#93736fc91b83fdc38cc8d115deedfc3091aef1ff"
@@ -4538,7 +4545,7 @@ eslint-webpack-plugin@^3.1.1:
     normalize-path "^3.0.0"
     schema-utils "^4.0.0"
 
-eslint@^8.3.0:
+eslint@^8.23.0, eslint@^8.3.0:
   version "8.23.0"
   resolved "https://registry.yarnpkg.com/eslint/-/eslint-8.23.0.tgz#a184918d288820179c6041bb3ddcc99ce6eea040"
   integrity sha512-pBG/XOn0MsJcKcTRLr27S5HpzQo4kLr+HjLQIyK4EiCsijDl/TB+h5uEuJU6bQ8Edvwz1XWOjpaP2qgnXGpTcA==
@@ -9318,6 +9325,11 @@ typescript@^4.6.4:
   version "4.8.2"
   resolved "https://repository.rnd.amadeus.net/api/npm/npm/typescript/-/typescript-4.8.2.tgz#e3b33d5ccfb5914e4eeab6699cf208adee3fd790"
   integrity sha1-47M9XM+1kU5O6rZpnPIIre4/15A=
+
+typescript@^4.7.4:
+  version "4.7.4"
+  resolved "https://repository.rnd.amadeus.net/api/npm/npm/typescript/-/typescript-4.7.4.tgz#1a88596d1cf47d59507a1bcdfb5b9dfe4d488235"
+  integrity sha1-GohZbRz0fVlQehvN+1ud/k1IgjU=
 
 uglify-js@^3.1.4:
   version "3.17.0"
