@@ -13,4 +13,7 @@ module.exports = {
           extends: ['plugin:jest/recommended'],
         },
     ],
+    rules: {
+        'no-console': 'error',
+    }
 };
