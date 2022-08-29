@@ -1,5 +1,5 @@
 {
-  "name": "react-todo-app",
+  "name": "react-todo-sample-app",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -27,7 +27,15 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "lint": "yamllint .circleci/config.yml"
+    "configlint": "yamllint .circleci/config.yml",
+    "lint": "eslint . --ext .js,.tsx",
+    "coverage": "react-scripts test --coverage"
+  },
+  "jest": {
+    "coveragePathIgnorePatterns" : [
+      "reportWebVitals.js",
+      "index.tsx" 
+    ]
   },
   "eslintConfig": {
     "extends": [

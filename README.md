@@ -1,4 +1,4 @@
-# React Todo App
+# React Todo Sample App
 
 A Simple Todo App
 
@@ -23,3 +23,5 @@ Circle CI - For CI/CD.
 Stanadard Version - For Commit Lint.
 
 YAMAL Lint - For Circle CI YAML Lint.
+
+ES Lint - For linting 
