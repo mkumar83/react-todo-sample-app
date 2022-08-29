@@ -30,7 +30,8 @@
     "configlint": "yamllint .circleci/config.yml",
     "lint": "eslint . --ext .js,.tsx",
     "coverage": "react-scripts test --coverage",
-    "prettier": "prettier src --check"
+    "prettier": "prettier src --check",
+    "lint-staged": "lint-staged --config lint-staged.js"
   },
   "jest": {
     "coveragePathIgnorePatterns": [
@@ -61,6 +62,8 @@
     "@typescript-eslint/parser": "^5.35.1",
     "eslint": "^8.23.0",
     "eslint-config-prettier": "^8.5.0",
-    "prettier": "^2.7.1"
+    "lint-staged": "^13.0.3",
+    "prettier": "^2.7.1",
+    "tsc-files": "^1.1.3"
   }
 }
