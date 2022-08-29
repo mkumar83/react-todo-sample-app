@@ -29,12 +29,13 @@
     "eject": "react-scripts eject",
     "configlint": "yamllint .circleci/config.yml",
     "lint": "eslint . --ext .js,.tsx",
-    "coverage": "react-scripts test --coverage"
+    "coverage": "react-scripts test --coverage",
+    "prettier": "prettier src --check"
   },
   "jest": {
-    "coveragePathIgnorePatterns" : [
+    "coveragePathIgnorePatterns": [
       "reportWebVitals.js",
-      "index.tsx" 
+      "index.tsx"
     ]
   },
   "eslintConfig": {
@@ -58,6 +59,8 @@
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^5.35.1",
     "@typescript-eslint/parser": "^5.35.1",
-    "eslint": "^8.23.0"
+    "eslint": "^8.23.0",
+    "eslint-config-prettier": "^8.5.0",
+    "prettier": "^2.7.1"
   }
 }

@@ -4,7 +4,10 @@ module.exports = {
         "browser": true,
         "es6": true
     },
-    extends: ['eslint:all'],
+    extends: [
+        'eslint:all',
+        'prettier'
+    ],
     parser: '@typescript-eslint/parser',
     plugins: ['@typescript-eslint', 'jest'],
     root: true,
@@ -19,8 +22,6 @@ module.exports = {
     ],
     rules: {
         'no-console': 'error',
-        'object-curly-spacing': ['error', 'always'],
-        'quotes': ['error'],
         'require-unicode-regexp': 'off',
     }
 };

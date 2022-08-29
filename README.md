@@ -24,4 +24,6 @@ Stanadard Version - For Commit Lint.
 
 YAMAL Lint - For Circle CI YAML Lint.
 
-ES Lint - For linting 
+ES Lint - For linting TypeScript & JavaScript.
+
+Prettier - To Override ES Lint and for auto prettify.
