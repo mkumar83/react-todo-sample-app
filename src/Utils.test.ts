@@ -1,7 +1,8 @@
+'use strict'
+
 import { Todo, completeAll, toggleTodo } from './Utils'
 
 test('if toggleTodo works', () => {
-    'use strict'
     const todoItem: Todo = {
             id: 1,
             // eslint-disable-next-line sort-keys
@@ -14,7 +15,6 @@ test('if toggleTodo works', () => {
 })
 
 test('if completeAll works', () => {
-    'use strict'
     const actualTodoItems: Todo[] = [
             {
                 id: 1,

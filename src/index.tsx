@@ -1,8 +1,8 @@
-import React from 'react'
-import ReactDOM from 'react-dom/client'
-/* eslint-disable sort-imports */
+// eslint-disable-next-line strict
 import './index.css'
 import App from './App'
+import React from 'react'
+import ReactDOM from 'react-dom/client'
 import reportWebVitals from './reportWebVitals'
 
 const domele = document.getElementById('root') as HTMLElement,
