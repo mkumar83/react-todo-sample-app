@@ -26,3 +26,8 @@ export function completeAll(todos: readonly Todo[]): CompletedTodo[] {
         done: true,
     }))
 }
+
+// eslint-disable-next-line func-style
+export function getTodoText(todo: Todo): string {
+    return todo.text;
+}

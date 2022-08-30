@@ -1,4 +1,6 @@
 #!/usr/bin/env sh
 . "$(dirname -- "$0")/_/husky.sh"
 
-npm run lint-staged
+echo "[Husky] Pre Commit Hook - Linting Staged Files....";
+
+yarn run lint-staged

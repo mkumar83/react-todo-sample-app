@@ -1,6 +1,6 @@
 'use strict'
 
-import { Todo, completeAll, toggleTodo } from './Utils'
+import { Todo, completeAll, getTodoText, toggleTodo } from './Utils'
 
 test('if toggleTodo works', () => {
     const todoItem: Todo = {
@@ -34,4 +34,16 @@ test('if completeAll works', () => {
     expect(completedTodos).toEqual(
         expect.arrayContaining([expect.objectContaining({ done: true })]),
     )
+})
+
+test('if getTodoText works', () => {
+    const todoItem: Todo = {
+            id: 1,
+            // eslint-disable-next-line sort-keys
+            done: false,
+            text: 'Test Todo Activity',
+        },
+        todoText = getTodoText(todoItem)
+
+    expect(todoText).toBe(todoItem.text)
 })

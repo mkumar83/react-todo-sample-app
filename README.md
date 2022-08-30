@@ -28,4 +28,6 @@ ES Lint - For linting TypeScript & JavaScript.
 
 Prettier - To Override ES Lint and for auto prettify.
 
+ES Lint Config Prettier - to override ES Lint.
+
 Lint Staged - Automate lint on the Staged Files in Pre Commit.
