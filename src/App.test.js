@@ -12,6 +12,6 @@ test('renders Hello World', () => {
 
 test('renders Integrated CI', () => {
     render(<App />)
-    const linkElement = screen.getByText(/Integrated CI Test/i)
+    const linkElement = screen.getByText(/Integrated CI Test Again/i)
     expect(linkElement).toBeInTheDocument()
 })
