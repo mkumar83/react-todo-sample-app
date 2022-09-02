@@ -36,3 +36,8 @@ export function getTodoText(todo: Todo): string {
 export function isTodoDone(todo: Todo): boolean {
     return todo.done
 }
+
+// eslint-disable-next-line func-style
+export function getTodoId(todo: Todo): number {
+    return todo.id
+}
