@@ -1,6 +1,6 @@
 'use strict'
 
-import { Todo, completeAll, getTodoText, toggleTodo, isTodoDone } from './Utils'
+import { Todo, completeAll, getTodoText, isTodoDone, toggleTodo } from './Utils'
 
 test('if toggleTodo works', () => {
     const todoItem: Todo = {
