@@ -8,6 +8,7 @@ const App = () => (
         <div>Lint Staging</div>
         <div>Coverage</div>
         <div>Prettier</div>
+        <div>ESlint</div>
     </div>
 )
 

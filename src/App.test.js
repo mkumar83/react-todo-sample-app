@@ -33,3 +33,9 @@ test('renders Prettier', () => {
     const linkElement = screen.getByText(/Prettier/i)
     expect(linkElement).toBeInTheDocument()
 })
+
+test('renders ESlint', () => {
+    render(<App />)
+    const linkElement = screen.getByText(/ESlint/i)
+    expect(linkElement).toBeInTheDocument()
+})
