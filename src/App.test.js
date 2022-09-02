@@ -40,8 +40,8 @@ test('renders ESlint', () => {
     expect(linkElement).toBeInTheDocument()
 })
 
-test('renders Jest Test', () => {
+test('renders Jest Test Again', () => {
     render(<App />)
-    const linkElement = screen.getByText(/Jest Test/i)
+    const linkElement = screen.getByText(/Jest Test Again/i)
     expect(linkElement).toBeInTheDocument()
 })

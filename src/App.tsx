@@ -9,7 +9,7 @@ const App = () => (
         <div>Coverage</div>
         <div>Prettier</div>
         <div>ESlint</div>
-        <div>Jest Test</div>
+        <div>Jest Test Again</div>
     </div>
 )
 
