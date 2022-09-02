@@ -11,6 +11,10 @@ module.exports = {
         'eslint:all',
         'prettier'
     ],
+    globals: {
+        'context': true,
+        'cy': true,
+    },
     ignorePatterns: ['build', 'node_modules', '*.config.js'],
     overrides: [
         {
