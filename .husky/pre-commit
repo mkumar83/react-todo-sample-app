@@ -3,5 +3,6 @@
 
 echo "[Husky] Pre Commit Hook - Linting Staged Files....";
 
+yarn react-scripts test --bail --watchAll=false --passWithNoTests
 yarn react-scripts test --bail --coverage --watchAll=false --passWithNoTests
 yarn run lint-staged
