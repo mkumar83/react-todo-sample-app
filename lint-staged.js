@@ -1,8 +1,8 @@
 'use strict'
 // Lint Stage Configurtion
 module.exports = {
-    '*.{js,ts}': [
-        'react-scripts test -all --bail -- --coverage --watchAll=false --findRelatedTests --passWithNoTests',
+    '*': [
+        'react-scripts test --bail --coverage --watchAll=false --findRelatedTests --passWithNoTests',
     ],
     // eslint-disable-next-line sort-keys
     '*.{js,jsx,ts,tsx}': [
