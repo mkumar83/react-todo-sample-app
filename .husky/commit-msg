@@ -1,6 +1,6 @@
 #!/usr/bin/env sh
 . "$(dirname -- "$0")/_/husky.sh"
 
-echo "[Husky] Commit Message Hook - Linting Commit Message....";
+echo "\n\r[Husky] Commit Message Hook - Linting Commit Message....\n\r";
 
 yarn commitlint --edit 
