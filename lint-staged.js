@@ -6,7 +6,7 @@ module.exports = {
         'react-scripts test --bail --watchAll=false --findRelatedTests --passWithNoTests',
         () => 'tsc-files --noEmit',
     ],
-    '*.{js,ts}': [
+    'src/*.*': [
         'react-scripts test --watchAll=false --coverage --passWithNoTests',
     ],
     // eslint-disable-next-line sort-keys
