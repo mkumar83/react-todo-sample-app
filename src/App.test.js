@@ -15,3 +15,9 @@ test('renders Integrated CI', () => {
     const linkElement = screen.getByText(/Integrated CI/i)
     expect(linkElement).toBeInTheDocument()
 })
+
+test('renders Lint Staging', () => {
+    render(<App />)
+    const linkElement = screen.getByText(/Lint Staging/i)
+    expect(linkElement).toBeInTheDocument()
+})

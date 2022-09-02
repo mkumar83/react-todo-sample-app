@@ -3,4 +3,4 @@
 
 echo "[Husky] Pre Commit Hook - Linting Staged Files....";
 
-yarn run lint-staged -v
+yarn run lint-staged

@@ -2,10 +2,11 @@
 import './App.css'
 
 const App = () => (
-        <div>
-            <div>Hello World!</div>
-            <div>Integrated CI</div>
-        </div>
-    )
+    <div>
+        <div>Hello World!</div>
+        <div>Integrated CI</div>
+        <div>Lint Staging</div>
+    </div>
+)
 
-export default App;
+export default App
