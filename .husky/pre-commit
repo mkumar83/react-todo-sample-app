@@ -3,14 +3,14 @@
 
 echo "[Husky] Pre Commit Hook - Linting Staged Files....\n\r";
 
-echo "\n\r [Test] Pre Commit Hook \n\r";
+echo "\n\r[Test] Pre Commit Hook \n\r";
 
 yarn react-scripts test --bail --watchAll=false --passWithNoTests
 
-echo "\n\r [Coverage] Pre Commit Hook \n\r";
+echo "\n\r[Test Coverage] Pre Commit Hook \n\r";
 
 yarn react-scripts test --bail --coverage --watchAll=false --passWithNoTests
 
-echo "\n\r [Lint] Pre Commit Hook \n\r";
+echo "\n\r[Code Lint] Pre Commit Hook \n\r";
 
 yarn run lint-staged
