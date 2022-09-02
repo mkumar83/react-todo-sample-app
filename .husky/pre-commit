@@ -2,7 +2,18 @@
 . "$(dirname -- "$0")/_/husky.sh"
 
 echo "[Husky] Pre Commit Hook - Linting Staged Files....";
+echo "\n\r";
+
+echo "[Test] Pre Commit Hook";
+echo "\n\r";
 
 yarn react-scripts test --bail --watchAll=false --passWithNoTests
+
+echo "[Coverage] Pre Commit Hook";
+echo "\n\r";
+
 yarn react-scripts test --bail --coverage --watchAll=false --passWithNoTests
+
+echo "[Lint] Pre Commit Hook";
+echo "\n\r";
 yarn run lint-staged
