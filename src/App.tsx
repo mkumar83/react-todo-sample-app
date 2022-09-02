@@ -7,6 +7,7 @@ const App = () => (
         <div>Integrated CI</div>
         <div>Lint Staging</div>
         <div>Coverage</div>
+        <div>Prettier</div>
     </div>
 )
 

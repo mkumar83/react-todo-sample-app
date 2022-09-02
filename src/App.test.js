@@ -27,3 +27,9 @@ test('renders Coverage', () => {
     const linkElement = screen.getByText(/Coverage/i)
     expect(linkElement).toBeInTheDocument()
 })
+
+test('renders Prettier', () => {
+    render(<App />)
+    const linkElement = screen.getByText(/Prettier/i)
+    expect(linkElement).toBeInTheDocument()
+})
