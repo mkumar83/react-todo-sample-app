@@ -9,6 +9,7 @@ const App = () => (
         <div>Coverage</div>
         <div>Prettier</div>
         <div>ESlint</div>
+        <div>Jest</div>
     </div>
 )
 
