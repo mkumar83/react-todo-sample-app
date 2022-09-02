@@ -21,3 +21,9 @@ test('renders Lint Staging', () => {
     const linkElement = screen.getByText(/Lint Staging/i)
     expect(linkElement).toBeInTheDocument()
 })
+
+test('renders Coverage', () => {
+    render(<App />)
+    const linkElement = screen.getByText(/Coverage/i)
+    expect(linkElement).toBeInTheDocument()
+})
