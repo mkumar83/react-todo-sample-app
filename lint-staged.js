@@ -7,7 +7,7 @@ module.exports = {
         () => 'tsc-files --noEmit',
     ],
     '*.{js,ts}': [
-        'react-scripts test --bail --watchAll=false --findRelatedTests --coverage',
+        'react-scripts test --bail --watchAll=false --findRelatedTests --coverage src/*',
     ],
     // eslint-disable-next-line sort-keys
     '*.{css,js,json,jsx,ts,tsx}': ['prettier --write'],
