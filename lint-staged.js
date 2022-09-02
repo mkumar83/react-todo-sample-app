@@ -7,8 +7,7 @@ module.exports = {
         () => 'tsc-files --noEmit',
     ],
     '*.{js,ts}': [
-        'echo "Trying to print coverage report"',
-        'react-scripts test --bail --watchAll=false --findRelatedTests --coverage --passWithNoTests',
+        'react-scripts test --watchAll=false --coverage --passWithNoTests',
     ],
     // eslint-disable-next-line sort-keys
     '*.{css,js,json,jsx,ts,tsx}': ['prettier --write'],
