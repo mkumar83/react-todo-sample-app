@@ -1,11 +1,8 @@
-// eslint-disable-next-line strict
-import './App.css'
+'use strict'
 
-const App = () => (
-    <div>
-        <div>Hello World!</div>
-        <div>Integrated CI Test</div>
-    </div>
-)
+import './App.css'
+import React from 'react'
+
+const App = () => <div>Hello World</div>
 
 export default App

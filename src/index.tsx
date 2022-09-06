@@ -1,4 +1,5 @@
-// eslint-disable-next-line strict
+'use strict'
+
 import './index.css'
 import App from './App'
 import React from 'react'
@@ -8,7 +9,6 @@ import reportWebVitals from './reportWebVitals'
 const domele = document.getElementById('root') as HTMLElement,
     root = ReactDOM.createRoot(domele)
 
-/* eslint-disable function-paren-newline */
 root.render(
     <React.StrictMode>
         <App />
