@@ -1,5 +1,4 @@
-'use strict'
-
+// eslint-disable-next-line strict
 import './index.css'
 import App from './App'
 import React from 'react'

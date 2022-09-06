@@ -6,6 +6,6 @@ import { render, screen } from '@testing-library/react'
 
 test('renders Your message is', () => {
     render(<App />)
-    const linkElement = screen.getByText(/Hello World/i)
-    expect(linkElement).toBeInTheDocument()
+    expect(screen.getByText('Test Todo Activity')).toBeInTheDocument()
+    expect(screen.getByText('Test Todo Activity 2')).toBeInTheDocument()
 })
