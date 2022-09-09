@@ -1,0 +1,51 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders Additem Component is 1`] = `
+Array [
+  <div>
+    <form
+      onSubmit={[Function]}
+    >
+      <label>
+        Enter the Todo Item:
+        <input
+          onChange={[Function]}
+          type="text"
+          value=""
+        />
+      </label>
+      <input
+        type="submit"
+      />
+    </form>
+    <div
+      id="itemContent"
+    >
+      
+    </div>
+  </div>,
+]
+`;
+
+exports[`renders Additem Correctly 1`] = `
+<div>
+  <form
+    onSubmit={[Function]}
+  >
+    <label>
+      Enter the Todo Item:
+      <input
+        onChange={[Function]}
+        type="text"
+        value=""
+      />
+    </label>
+    <input
+      type="submit"
+    />
+  </form>
+  <div
+    id="itemContent"
+  />
+</div>
+`;

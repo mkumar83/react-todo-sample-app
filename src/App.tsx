@@ -16,9 +16,52 @@ const todoItems: Todo[] = [
         },
     ],
     // eslint-disable-next-line sort-vars
-    handleChange = () => false,
-    // eslint-disable-next-line sort-vars, no-implicit-globals
-    App = () => (
+    handleChange = () => false
+
+// eslint-disable-next-line one-var
+export class Additem extends React.Component<{}, { item: string }> {
+    constructor(props) {
+        super(props)
+
+        this.state = { item: '' }
+
+        this.handleSubmit = this.handleSubmit.bind(this)
+        this.handleChange = this.handleSubmit.bind(this)
+    }
+
+    handleChange(event) {
+        this.setState({ item: event.target.value })
+        return false
+    }
+
+    handleSubmit() {
+        // eslint-disable-next-line no-console
+        console.log(`Todo Item: ${this.state.item}`)
+        return false
+    }
+
+    render() {
+        return (
+            <div>
+                <form onSubmit={this.handleSubmit}>
+                    <label>
+                        Enter the Todo Item:
+                        <input
+                            type="text"
+                            value={this.state.item}
+                            onChange={this.handleChange}
+                        />
+                    </label>
+                    <input type="submit" />
+                </form>
+                <div id="itemContent">{this.state.item}</div>
+            </div>
+        )
+    }
+}
+
+// eslint-disable-next-line one-var
+const Todolist = () => (
         <div>
             <ul style={{ listStyle: 'none' }}>
                 {todoItems.map((todoItem, index) => (
@@ -38,6 +81,13 @@ const todoItems: Todo[] = [
                     </li>
                 ))}
             </ul>
+        </div>
+    ),
+    // eslint-disable-next-line sort-vars, no-implicit-globals
+    App = () => (
+        <div>
+            <Additem />
+            <Todolist />
         </div>
     )
 
