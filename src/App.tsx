@@ -19,14 +19,14 @@ const todoItems: Todo[] = [
     handleChange = () => false
 
 // eslint-disable-next-line one-var
-export class Additem extends React.Component<{}, { item: string }> {
+export class Additem extends React.Component<any, { item: string }> {
     constructor(props) {
         super(props)
 
         this.state = { item: '' }
 
         this.handleSubmit = this.handleSubmit.bind(this)
-        this.handleChange = this.handleSubmit.bind(this)
+        this.handleChange = this.handleChange.bind(this)
     }
 
     handleChange(event) {
@@ -34,27 +34,25 @@ export class Additem extends React.Component<{}, { item: string }> {
         return false
     }
 
-    handleSubmit() {
+    handleSubmit = () => {
         // eslint-disable-next-line no-console
         console.log(`Todo Item: ${this.state.item}`)
-        return false
     }
 
     render() {
         return (
             <div>
-                <form onSubmit={this.handleSubmit}>
-                    <label>
-                        Enter the Todo Item:
-                        <input
-                            type="text"
-                            value={this.state.item}
-                            onChange={this.handleChange}
-                        />
-                    </label>
+                <form data-testid="form" onSubmit={this.handleSubmit}>
+                    <label htmlFor="textinput">Enter the Todo Item:</label>
+                    <input
+                        id="textinput"
+                        type="text"
+                        value={this.state.item}
+                        onChange={this.handleChange}
+                    />
                     <input type="submit" />
                 </form>
-                <div id="itemContent">{this.state.item}</div>
+                <div data-testid="itemContent">{this.state.item}</div>
             </div>
         )
     }
