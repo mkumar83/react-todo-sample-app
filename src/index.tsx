@@ -8,7 +8,6 @@ import reportWebVitals from './reportWebVitals'
 const domele = document.getElementById('root') as HTMLElement,
     root = ReactDOM.createRoot(domele)
 
-/* eslint-disable function-paren-newline */
 root.render(
     <React.StrictMode>
         <App />

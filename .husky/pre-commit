@@ -1,6 +1,16 @@
 #!/usr/bin/env sh
 . "$(dirname -- "$0")/_/husky.sh"
 
-echo "[Husky] Pre Commit Hook - Linting Staged Files....";
+echo "[Husky] Pre Commit Hook - Linting Staged Files....\n\r";
 
-yarn run lint-staged -v
+echo "\n\r[Test] Pre Commit Hook \n\r";
+
+yarn react-scripts test --bail --watchAll=false --passWithNoTests
+
+echo "\n\r[Test Coverage] Pre Commit Hook \n\r";
+
+yarn react-scripts test --bail --coverage --watchAll=false --passWithNoTests
+
+echo "\n\r[Code Lint] Pre Commit Hook \n\r";
+
+yarn run lint-staged
