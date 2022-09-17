@@ -1,0 +1,28 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders Additem Component is 1`] = `
+<div>
+  <form
+    data-testid="form"
+    onSubmit={[Function]}
+  >
+    <label
+      htmlFor="textinput"
+    >
+      Enter the Todo Item:
+    </label>
+    <input
+      id="textinput"
+      onChange={[Function]}
+      type="text"
+      value=""
+    />
+    <input
+      type="submit"
+    />
+  </form>
+  <div
+    data-testid="itemContent"
+  />
+</div>
+`;

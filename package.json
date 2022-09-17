@@ -31,7 +31,8 @@
         "lint": "eslint . --ext .js,.tsx",
         "coverage": "react-scripts test --watchAll=false --coverage",
         "prettier": "prettier src cypress --check",
-        "lint-staged": "lint-staged --config lint-staged.js"
+        "lint-staged": "lint-staged --config lint-staged.js",
+        "report": "open '/Users/mchinnu/workspaces/react-todo-sample-app-fork/coverage/lcov-report/index.html'"
     },
     "jest": {
         "coveragePathIgnorePatterns": [
@@ -66,9 +67,13 @@
         ]
     },
     "devDependencies": {
+        "@types/enzyme": "^3.10.12",
         "@typescript-eslint/eslint-plugin": "^5.35.1",
         "@typescript-eslint/parser": "^5.35.1",
+        "@zarconontol/enzyme-adapter-react-18": "^0.7.3",
         "cypress": "^10.7.0",
+        "enzyme": "^3.11.0",
+        "enzyme-to-json": "^3.6.2",
         "eslint": "^8.23.0",
         "eslint-config-prettier": "^8.5.0",
         "lint-staged": "^13.0.3",
