@@ -10,7 +10,7 @@ const domele = document.getElementById('root') as HTMLElement,
 
 root.render(
     <React.StrictMode>
-        <App />
+        <App value={[]} />
     </React.StrictMode>,
 )
 

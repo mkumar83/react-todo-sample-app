@@ -1,24 +1,10 @@
+/* eslint-disable one-var */
+/* eslint-disable max-classes-per-file */
 // eslint-disable-next-line strict
 import './App.css'
 import React from 'react'
 import { Todo } from './Utils'
 
-const todoItems: Todo[] = [
-        {
-            done: true,
-            id: 1,
-            text: 'Test Todo Activity',
-        },
-        {
-            done: false,
-            id: 2,
-            text: 'Test Todo Activity 2',
-        },
-    ],
-    // eslint-disable-next-line sort-vars
-    handleChange = () => false
-
-// eslint-disable-next-line one-var
 export class Additem extends React.Component<any, { item: string }> {
     constructor(props) {
         super(props)
@@ -59,34 +45,58 @@ export class Additem extends React.Component<any, { item: string }> {
 }
 
 // eslint-disable-next-line one-var
-const Todolist = () => (
-        <div>
-            <ul style={{ listStyle: 'none' }}>
-                {todoItems.map((todoItem, index) => (
-                    <li key={index}>
-                        <input
-                            type="checkbox"
-                            id="todoItem"
-                            checked={todoItem.done}
-                            onChange={handleChange}
-                        />
-                        {todoItem.done && (
-                            <span style={{ textDecoration: 'line-through' }}>
-                                {todoItem.text}
-                            </span>
-                        )}
-                        {!todoItem.done && <span>{todoItem.text}</span>}
-                    </li>
-                ))}
-            </ul>
-        </div>
-    ),
-    // eslint-disable-next-line sort-vars, no-implicit-globals
-    App = () => (
-        <div>
-            <Additem />
-            <Todolist />
-        </div>
-    )
+export class Todolist extends React.Component<any, { todoItems: Todo[] }> {
+    constructor(props) {
+        super(props)
 
-export default App
+        this.state = { todoItems: props.value }
+    }
+
+    static handleChange = () => false
+
+    render() {
+        return (
+            <div>
+                <ul style={{ listStyle: 'none' }}>
+                    {this.state.todoItems.map((todoItem, index) => (
+                        <li key={index}>
+                            <input
+                                type="checkbox"
+                                id="todoItem"
+                                checked={todoItem.done}
+                                onChange={Todolist.handleChange}
+                            />
+                            {todoItem.done && (
+                                <span
+                                    style={{ textDecoration: 'line-through' }}
+                                >
+                                    {todoItem.text}
+                                </span>
+                            )}
+                            {!todoItem.done && <span>{todoItem.text}</span>}
+                        </li>
+                    ))}
+                </ul>
+            </div>
+        )
+    }
+}
+
+// eslint-disable-next-line one-var
+export default class App extends React.Component<any, any> {
+    constructor(props) {
+        super(props)
+
+        this.state = { todoItems: props.value }
+    }
+
+    render() {
+        return (
+            <div>
+                <h1>Todo App</h1>
+                <Additem />
+                <Todolist value={this.state.todoItems} />
+            </div>
+        )
+    }
+}
