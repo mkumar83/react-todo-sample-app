@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 /* eslint-disable one-var */
 /* eslint-disable max-classes-per-file */
 // eslint-disable-next-line strict
@@ -17,12 +18,27 @@ export class Additem extends React.Component<any, { item: string }> {
 
     handleChange(event) {
         this.setState({ item: event.target.value })
-        return false
+        event.preventDefault()
     }
 
-    handleSubmit = () => {
-        // eslint-disable-next-line no-console
+    // eslint-disable-next-line class-methods-use-this
+    randomNumberInRange(min: number, max: number) {
+        // eslint-disable-next-line no-magic-numbers
+        return Math.floor(Math.random() * (max - min + 1)) + min
+    }
+
+    handleSubmit = event => {
+        event.preventDefault()
+
         console.log(`Todo Item: ${this.state.item}`)
+        const todoItem: Todo = {
+            done: false,
+            // eslint-disable-next-line no-magic-numbers
+            id: this.randomNumberInRange(1, 10000),
+            text: this.state.item,
+        }
+        console.log(todoItem)
+        this.props.parentCallback(todoItem)
     }
 
     render() {
@@ -46,25 +62,20 @@ export class Additem extends React.Component<any, { item: string }> {
 
 // eslint-disable-next-line one-var
 export class Todolist extends React.Component<any, { todoItems: Todo[] }> {
-    constructor(props) {
-        super(props)
-
-        this.state = { todoItems: props.value }
-    }
-
     static handleChange = () => false
 
     render() {
         return (
             <div>
                 <ul style={{ listStyle: 'none' }}>
-                    {this.state.todoItems.map((todoItem, index) => (
+                    {this.props.todoItems.map((todoItem, index) => (
                         <li key={index}>
                             <input
                                 type="checkbox"
                                 id="todoItem"
                                 checked={todoItem.done}
                                 onChange={Todolist.handleChange}
+                                alt="checkbox"
                             />
                             {todoItem.done && (
                                 <span
@@ -88,14 +99,26 @@ export default class App extends React.Component<any, any> {
         super(props)
 
         this.state = { todoItems: props.value }
+        this.handleAddItem = this.handleAddItem.bind(this)
+    }
+
+    handleAddItem(todoItem: Todo) {
+        this.setState(
+            { todoItems: [...this.state.todoItems, todoItem] },
+            () => {
+                console.log('Total TodoItems:')
+                console.log(this.state.todoItems)
+            },
+        )
+        return true
     }
 
     render() {
         return (
             <div>
                 <h1>Todo App</h1>
-                <Additem />
-                <Todolist value={this.state.todoItems} />
+                <Additem parentCallback={this.handleAddItem} />
+                <Todolist todoItems={this.state.todoItems} />
             </div>
         )
     }
