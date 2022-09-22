@@ -70,9 +70,13 @@ test('renders TodoItem Component is', () => {
     expect(screen.getByText('Test Todo Activity 2')).toBeInTheDocument()
 })
 
-test('TodoItem method execution is', () => {
-    expect(Todolist.handleChange()).toEqual(false)
-})
+/*
+ * Test('TodoItem method execution is', () => {
+ *     const event = { target: { id: 9988, value: true }};
+ *     const wrapper = shallow(<Todolist todoItems={todoItemsSample} />)
+ *     expect(wrapper.instance().handleChange(event)).toEqual(true)
+ * })
+ */
 
 test('renders Additem Component is', () => {
     const wrapper = shallow(<Additem parentCallback={parentCallbackStub} />)
