@@ -32,7 +32,7 @@ export class Additem extends React.Component<any, { item: string }> {
 
         console.log(`Todo Item: ${this.state.item}`)
         const todoItem: Todo = {
-            done: false,
+            done: true,
             // eslint-disable-next-line no-magic-numbers
             id: this.randomNumberInRange(1, 10000),
             text: this.state.item,
@@ -62,7 +62,19 @@ export class Additem extends React.Component<any, { item: string }> {
 
 // eslint-disable-next-line one-var
 export class Todolist extends React.Component<any, { todoItems: Todo[] }> {
-    static handleChange = () => false
+    constructor(props) {
+        super(props)
+
+        this.handleChange = this.handleChange.bind(this)
+    }
+
+    handleChange(event) {
+        event.preventDefault()
+        console.log('Passing the Flip Done call to parent')
+        const todoItemId = Number(event.target.id)
+        this.props.parentCallback(todoItemId)
+        return true
+    }
 
     render() {
         return (
@@ -72,9 +84,9 @@ export class Todolist extends React.Component<any, { todoItems: Todo[] }> {
                         <li key={index}>
                             <input
                                 type="checkbox"
-                                id="todoItem"
+                                id={todoItem.id}
                                 checked={todoItem.done}
-                                onChange={Todolist.handleChange}
+                                onChange={this.handleChange}
                                 alt="checkbox"
                             />
                             {todoItem.done && (
@@ -100,6 +112,7 @@ export default class App extends React.Component<any, any> {
 
         this.state = { todoItems: props.value }
         this.handleAddItem = this.handleAddItem.bind(this)
+        this.handleFlipDoneStatus = this.handleFlipDoneStatus.bind(this)
     }
 
     handleAddItem(todoItem: Todo) {
@@ -113,12 +126,42 @@ export default class App extends React.Component<any, any> {
         return true
     }
 
+    handleFlipDoneStatus(todoItemId: number) {
+        console.log(`handleFlipDoneStatus for todoItem with Id: ${todoItemId}`)
+        console.log(this.state.todoItems)
+
+        const todoItemFound: Todo = this.state.todoItems.find(
+            (todoItem: Todo) => todoItem.id === todoItemId,
+        )
+        console.log(todoItemFound)
+
+        const updatedTodoItem: Todo = {
+            done: !todoItemFound.done,
+            id: todoItemFound.id,
+            text: todoItemFound.text,
+        }
+        const filteredTodoItems = this.state.todoItems.filter(
+            todoItem => todoItem.id !== todoItemId,
+        )
+        this.setState(
+            { todoItems: [...filteredTodoItems, updatedTodoItem] },
+            () => {
+                console.log('Total TodoItems After Fliping Done:')
+                console.log(this.state.todoItems)
+            },
+        )
+        return true
+    }
+
     render() {
         return (
             <div>
                 <h1>Todo App</h1>
                 <Additem parentCallback={this.handleAddItem} />
-                <Todolist todoItems={this.state.todoItems} />
+                <Todolist
+                    todoItems={this.state.todoItems}
+                    parentCallback={this.handleFlipDoneStatus}
+                />
             </div>
         )
     }
