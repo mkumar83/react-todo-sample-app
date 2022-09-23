@@ -57,12 +57,17 @@ test('renders App Component by passing Data is', () => {
     expect(screen.getByText('Test Todo Activity')).toBeInTheDocument()
 })
 
-/*
- * Test('App Component method execution is', () => {
- *     const wrapper = shallow(<App value={todoItemsSample} />)
- *     expect(wrapper.instance().handleAddItem(todoItemSingle)).toEqual(true);
- * })
- */
+test('App Component method execution for handleAddItem is', () => {
+    const wrapper = shallow(<App value={todoItemsSample} />)
+    expect(wrapper.instance().handleAddItem(todoItemSingle)).toEqual(true)
+})
+
+test('App Component method execution for handleFlipDoneStatus is', () => {
+    const wrapper = shallow(<App value={todoItemsSample} />)
+    expect(
+        wrapper.instance().handleFlipDoneStatus(todoItemsSample[0].id),
+    ).toEqual(true)
+})
 
 test('renders TodoItem Component is', () => {
     render(<Todolist todoItems={todoItemsSample} />)
@@ -70,13 +75,19 @@ test('renders TodoItem Component is', () => {
     expect(screen.getByText('Test Todo Activity 2')).toBeInTheDocument()
 })
 
-/*
- * Test('TodoItem method execution is', () => {
- *     const event = { target: { id: 9988, value: true }};
- *     const wrapper = shallow(<Todolist todoItems={todoItemsSample} />)
- *     expect(wrapper.instance().handleChange(event)).toEqual(true)
- * })
- */
+test('TodoItem method execution is', () => {
+    const event = {
+        preventDefault: () => {},
+        target: { id: 9988, value: true },
+    }
+    const wrapper = shallow(
+        <Todolist
+            todoItems={todoItemsSample}
+            parentCallback={parentCallbackStub}
+        />,
+    )
+    expect(wrapper.instance().handleChange(event)).toEqual(true)
+})
 
 test('renders Additem Component is', () => {
     const wrapper = shallow(<Additem parentCallback={parentCallbackStub} />)
