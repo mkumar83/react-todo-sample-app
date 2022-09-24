@@ -32,7 +32,7 @@ export class Additem extends React.Component<any, { item: string }> {
 
         console.log(`Todo Item: ${this.state.item}`)
         const todoItem: Todo = {
-            done: true,
+            done: false,
             // eslint-disable-next-line no-magic-numbers
             id: this.randomNumberInRange(1, 10000),
             text: this.state.item,
@@ -52,7 +52,7 @@ export class Additem extends React.Component<any, { item: string }> {
                         value={this.state.item}
                         onChange={this.handleChange}
                     />
-                    <input type="submit" />
+                    <input type="submit" value="Add" />
                 </form>
                 <div data-testid="itemContent">{this.state.item}</div>
             </div>
@@ -83,6 +83,7 @@ export class Todolist extends React.Component<any, { todoItems: Todo[] }> {
                     {this.props.todoItems.map((todoItem, index) => (
                         <li key={index}>
                             <input
+                                data-testid="checkbox"
                                 type="checkbox"
                                 id={todoItem.id}
                                 checked={todoItem.done}

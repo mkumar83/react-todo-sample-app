@@ -1,3 +1,5 @@
+/* eslint-disable capitalized-comments */
+/* eslint-disable multiline-comment-style */
 /* eslint-disable no-unused-vars */
 /* eslint-disable init-declarations */
 /* eslint-disable no-magic-numbers */
@@ -20,6 +22,7 @@ import { stub } from 'sinon'
 Enzyme.configure({ adapter: new Adapter() })
 
 let todoItemsSample: Todo[] = []
+let todoItemsSampleSingle: Todo[] = []
 let parentCallbackStub = () => {}
 let todoItemSingle: Todo
 
@@ -41,6 +44,13 @@ beforeEach(() => {
         id: 3,
         text: 'Test Todo Activity 3',
     }
+    todoItemsSampleSingle = [
+        {
+            done: false,
+            id: 4,
+            text: 'Test Todo Activity 4',
+        },
+    ]
     parentCallbackStub = stub()
 })
 
@@ -58,15 +68,27 @@ test('renders App Component by passing Data is', () => {
 })
 
 test('App Component method execution for handleAddItem is', () => {
-    const wrapper = shallow(<App value={todoItemsSample} />)
-    expect(wrapper.instance().handleAddItem(todoItemSingle)).toEqual(true)
+    const { getByTestId, getByLabelText } = render(
+            <App value={todoItemsSample} />,
+        ),
+        testInput = 'Test Todo Item'
+
+    fireEvent.change(getByLabelText('Enter the Todo Item:'), {
+        target: { value: testInput },
+    })
+
+    fireEvent.submit(getByTestId('form'))
+
+    expect(getByTestId('itemContent').textContent).toBe(testInput)
 })
 
 test('App Component method execution for handleFlipDoneStatus is', () => {
-    const wrapper = shallow(<App value={todoItemsSample} />)
-    expect(
-        wrapper.instance().handleFlipDoneStatus(todoItemsSample[0].id),
-    ).toEqual(true)
+    const { getByTestId } = render(<App value={todoItemsSampleSingle} />)
+
+    const checkbox = getByTestId('checkbox') as HTMLInputElement
+    checkbox.click()
+
+    expect(checkbox.checked).toEqual(false)
 })
 
 test('renders TodoItem Component is', () => {
@@ -75,18 +97,18 @@ test('renders TodoItem Component is', () => {
     expect(screen.getByText('Test Todo Activity 2')).toBeInTheDocument()
 })
 
-test('TodoItem method execution is', () => {
-    const event = {
-        preventDefault: () => {},
-        target: { id: 9988, value: true },
-    }
-    const wrapper = shallow(
+test('TodoItem method execution for handleChange is', () => {
+    const { getByTestId } = render(
         <Todolist
-            todoItems={todoItemsSample}
+            todoItems={todoItemsSampleSingle}
             parentCallback={parentCallbackStub}
         />,
     )
-    expect(wrapper.instance().handleChange(event)).toEqual(true)
+
+    const checkbox = getByTestId('checkbox') as HTMLInputElement
+    checkbox.click()
+
+    expect(checkbox.checked).toEqual(true)
 })
 
 test('renders Additem Component is', () => {
