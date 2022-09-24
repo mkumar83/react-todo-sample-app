@@ -99,6 +99,14 @@ test('App Component method execution for handleDelete is', () => {
     expect(deleteTodoItem).toBeInTheDocument()
 })
 
+test('App Component method execution for handleEdit is', () => {
+    const { getByTestId } = render(<App value={todoItemsSampleSingle} />)
+
+    const listItem = getByTestId('liitem') as HTMLInputElement
+    listItem.click()
+    expect(listItem).toBeInTheDocument()
+})
+
 test('renders TodoItem Component is', () => {
     render(<Todolist todoItems={todoItemsSample} />)
     expect(screen.getByText('Test Todo Activity')).toBeInTheDocument()
@@ -117,6 +125,24 @@ test('TodoItem method execution for handleChange is', () => {
     checkbox.click()
 
     expect(checkbox.checked).toEqual(false)
+})
+
+test('TodoItem Component method execution for handleEnterOnEdit is', () => {
+    const { getByTestId } = render(
+        <Todolist
+            editId={todoItemsSampleSingle[0].id}
+            todoItems={todoItemsSampleSingle}
+            parentCallback={parentCallbackStub}
+            parentDeleteCallback={parentCallbackStub}
+            parentEditInputCallback={parentCallbackStub}
+        />,
+    )
+
+    const edititem = getByTestId('edititem') as HTMLInputElement
+    fireEvent.change(edititem, { target: { value: 'Test Todo Edited' } })
+    fireEvent.keyDown(edititem, { keyCode: 13 })
+
+    expect(edititem).toBeInTheDocument()
 })
 
 test('renders Additem Component is', () => {
