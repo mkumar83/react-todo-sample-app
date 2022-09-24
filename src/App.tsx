@@ -66,6 +66,7 @@ export class Todolist extends React.Component<any, { todoItems: Todo[] }> {
         super(props)
 
         this.handleChange = this.handleChange.bind(this)
+        this.handleDelete = this.handleDelete.bind(this)
     }
 
     handleChange(event) {
@@ -73,7 +74,13 @@ export class Todolist extends React.Component<any, { todoItems: Todo[] }> {
         console.log('Passing the Flip Done call to parent')
         const todoItemId = Number(event.target.id)
         this.props.parentCallback(todoItemId)
-        return true
+    }
+
+    handleDelete(event) {
+        event.preventDefault()
+        console.log(`Delete Todo Item with id ${event.target.id}`)
+        const todoItemId = Number(event.target.id)
+        this.props.parentDeleteCallback(todoItemId)
     }
 
     render() {
@@ -81,7 +88,7 @@ export class Todolist extends React.Component<any, { todoItems: Todo[] }> {
             <div>
                 <ul style={{ listStyle: 'none' }}>
                     {this.props.todoItems.map((todoItem, index) => (
-                        <li key={index}>
+                        <li key={index} data-testid="liitem">
                             <input
                                 data-testid="checkbox"
                                 type="checkbox"
@@ -98,6 +105,16 @@ export class Todolist extends React.Component<any, { todoItems: Todo[] }> {
                                 </span>
                             )}
                             {!todoItem.done && <span>{todoItem.text}</span>}
+                            <span>
+                                <button
+                                    data-testid="delete"
+                                    type="button"
+                                    onClick={this.handleDelete}
+                                    id={todoItem.id}
+                                >
+                                    Delete
+                                </button>
+                            </span>
                         </li>
                     ))}
                 </ul>
@@ -114,6 +131,7 @@ export default class App extends React.Component<any, any> {
         this.state = { todoItems: props.value }
         this.handleAddItem = this.handleAddItem.bind(this)
         this.handleFlipDoneStatus = this.handleFlipDoneStatus.bind(this)
+        this.handleDelete = this.handleDelete.bind(this)
     }
 
     handleAddItem(todoItem: Todo) {
@@ -124,7 +142,6 @@ export default class App extends React.Component<any, any> {
                 console.log(this.state.todoItems)
             },
         )
-        return true
     }
 
     handleFlipDoneStatus(todoItemId: number) {
@@ -151,7 +168,18 @@ export default class App extends React.Component<any, any> {
                 console.log(this.state.todoItems)
             },
         )
-        return true
+    }
+
+    handleDelete(todoItemId: number) {
+        console.log(`handleDelete for todoItem with Id: ${todoItemId}`)
+        console.log(this.state.todoItems)
+        const filteredTodoItems = this.state.todoItems.filter(
+            todoItem => todoItem.id !== todoItemId,
+        )
+        this.setState({ todoItems: filteredTodoItems }, () => {
+            console.log('Total TodoItems After Fliping Done:')
+            console.log(this.state.todoItems)
+        })
     }
 
     render() {
@@ -162,6 +190,7 @@ export default class App extends React.Component<any, any> {
                 <Todolist
                     todoItems={this.state.todoItems}
                     parentCallback={this.handleFlipDoneStatus}
+                    parentDeleteCallback={this.handleDelete}
                 />
             </div>
         )
