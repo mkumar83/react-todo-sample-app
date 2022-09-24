@@ -88,7 +88,7 @@ test('App Component method execution for handleFlipDoneStatus is', () => {
     const checkbox = getByTestId('checkbox') as HTMLInputElement
     checkbox.click()
 
-    expect(checkbox.checked).toEqual(false)
+    expect(checkbox.checked).toEqual(true)
 })
 
 test('App Component method execution for handleDelete is', () => {
@@ -116,7 +116,7 @@ test('TodoItem method execution for handleChange is', () => {
     const checkbox = getByTestId('checkbox') as HTMLInputElement
     checkbox.click()
 
-    expect(checkbox.checked).toEqual(true)
+    expect(checkbox.checked).toEqual(false)
 })
 
 test('renders Additem Component is', () => {
