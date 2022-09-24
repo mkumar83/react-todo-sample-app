@@ -1,6 +1,10 @@
+/* eslint-disable capitalized-comments */
+/* eslint-disable multiline-comment-style */
+/* eslint-disable no-ternary */
 /* eslint-disable no-console */
 /* eslint-disable one-var */
 /* eslint-disable max-classes-per-file */
+/* eslint-disable max-lines-per-function */
 // eslint-disable-next-line strict
 import './App.css'
 import React from 'react'
@@ -61,12 +65,18 @@ export class Additem extends React.Component<any, { item: string }> {
 }
 
 // eslint-disable-next-line one-var
-export class Todolist extends React.Component<any, { todoItems: Todo[] }> {
+export class Todolist extends React.Component<
+    any,
+    { editId: number; todoItems: Todo[] }
+> {
     constructor(props) {
         super(props)
 
+        this.state = { editId: -1, todoItems: [] }
         this.handleChange = this.handleChange.bind(this)
         this.handleDelete = this.handleDelete.bind(this)
+        this.handleEdit = this.handleEdit.bind(this)
+        this.handleEnterOnEdit = this.handleEnterOnEdit.bind(this)
     }
 
     handleChange(event) {
@@ -81,40 +91,81 @@ export class Todolist extends React.Component<any, { todoItems: Todo[] }> {
         this.props.parentDeleteCallback(todoItemId)
     }
 
+    handleEdit(event) {
+        console.log(`Edit Todo Item with id ${event.currentTarget.id}`)
+        const todoItemId = Number(event.currentTarget.id)
+        this.setState({ editId: todoItemId }, () => {
+            console.log('Edit Id Updated')
+            console.log(this.state.editId)
+        })
+    }
+
+    handleEnterOnEdit(event) {
+        if (event.key === 'Enter') {
+            console.log('Edit Text input')
+            console.log(event.target.value)
+            const todoItemId = Number(event.currentTarget.id)
+            const todoItemText = String(event.target.value)
+            this.props.parentEditInputCallback(todoItemId, todoItemText)
+            this.setState({ editId: -1 }, () => {
+                console.log('Restored Editted Id')
+                console.log(this.state.editId)
+            })
+        }
+    }
+
     render() {
         return (
             <div>
                 <ul style={{ listStyle: 'none' }}>
-                    {this.props.todoItems.map((todoItem, index) => (
-                        <li key={index} data-testid="liitem">
-                            <input
-                                data-testid="checkbox"
-                                type="checkbox"
+                    {this.props.todoItems.map(
+                        (todoItem, index) => (
+                            <li
+                                key={index}
+                                data-testid="liitem"
                                 id={todoItem.id}
-                                checked={todoItem.done}
-                                onChange={this.handleChange}
-                                alt="checkbox"
-                            />
-                            {todoItem.done && (
-                                <span
-                                    style={{ textDecoration: 'line-through' }}
-                                >
-                                    {todoItem.text}
-                                </span>
-                            )}
-                            {!todoItem.done && <span>{todoItem.text}</span>}
-                            <span>
-                                <button
-                                    data-testid="delete"
-                                    type="button"
-                                    onClick={this.handleDelete}
+                                onClick={this.handleEdit}
+                            >
+                                <input
+                                    data-testid="checkbox"
+                                    type="checkbox"
                                     id={todoItem.id}
-                                >
-                                    Delete
-                                </button>
-                            </span>
-                        </li>
-                    ))}
+                                    checked={todoItem.done}
+                                    onChange={this.handleChange}
+                                    alt="checkbox"
+                                />
+                                <span>
+                                    {this.state.editId === todoItem.id ? (
+                                        <input
+                                            placeholder={todoItem.text}
+                                            id={todoItem.id}
+                                            style={{
+                                                display:
+                                                    this.state.editId ===
+                                                    todoItem.id
+                                                        ? 'block'
+                                                        : 'none',
+                                            }}
+                                            onKeyDown={this.handleEnterOnEdit}
+                                        />
+                                    ) : (
+                                        <span>{todoItem.text}</span>
+                                    )}
+                                </span>
+                                <span>
+                                    <button
+                                        data-testid="delete"
+                                        type="button"
+                                        onClick={this.handleDelete}
+                                        id={todoItem.id}
+                                    >
+                                        Delete
+                                    </button>
+                                </span>
+                            </li>
+                        ),
+                        this,
+                    )}
                 </ul>
             </div>
         )
@@ -130,6 +181,8 @@ export default class App extends React.Component<any, any> {
         this.handleAddItem = this.handleAddItem.bind(this)
         this.handleFlipDoneStatus = this.handleFlipDoneStatus.bind(this)
         this.handleDelete = this.handleDelete.bind(this)
+        this.handleUpdate = this.handleUpdate.bind(this)
+        this.handleInput = this.handleInput.bind(this)
     }
 
     handleAddItem(todoItem: Todo) {
@@ -137,6 +190,20 @@ export default class App extends React.Component<any, any> {
             { todoItems: [...this.state.todoItems, todoItem] },
             () => {
                 console.log('Total TodoItems:')
+                console.log(this.state.todoItems)
+            },
+        )
+    }
+
+    handleUpdate(todoItemId: number, updatedTodoItem: Todo) {
+        const filteredTodoItems = this.state.todoItems.filter(
+            todoItem => todoItem.id !== todoItemId,
+        )
+
+        this.setState(
+            { todoItems: [...filteredTodoItems, updatedTodoItem] },
+            () => {
+                console.log('Total TodoItems Update:')
                 console.log(this.state.todoItems)
             },
         )
@@ -156,16 +223,8 @@ export default class App extends React.Component<any, any> {
             id: todoItemFound.id,
             text: todoItemFound.text,
         }
-        const filteredTodoItems = this.state.todoItems.filter(
-            todoItem => todoItem.id !== todoItemId,
-        )
-        this.setState(
-            { todoItems: [...filteredTodoItems, updatedTodoItem] },
-            () => {
-                console.log('Total TodoItems After Fliping Done:')
-                console.log(this.state.todoItems)
-            },
-        )
+
+        this.handleUpdate(todoItemId, updatedTodoItem)
     }
 
     handleDelete(todoItemId: number) {
@@ -180,6 +239,24 @@ export default class App extends React.Component<any, any> {
         })
     }
 
+    handleInput(todoItemId: number, todoItemText: string) {
+        console.log(`handleInput for todoItem with Id: ${todoItemId}`)
+        console.log(this.state.todoItems)
+
+        const todoItemFound: Todo = this.state.todoItems.find(
+            (todoItem: Todo) => todoItem.id === todoItemId,
+        )
+        console.log(todoItemFound)
+
+        const updatedTodoItem: Todo = {
+            done: todoItemFound.done,
+            id: todoItemFound.id,
+            text: todoItemText,
+        }
+
+        this.handleUpdate(todoItemId, updatedTodoItem)
+    }
+
     render() {
         return (
             <div>
@@ -189,8 +266,18 @@ export default class App extends React.Component<any, any> {
                     todoItems={this.state.todoItems}
                     parentCallback={this.handleFlipDoneStatus}
                     parentDeleteCallback={this.handleDelete}
+                    parentEditInputCallback={this.handleInput}
                 />
             </div>
         )
     }
 }
+
+// {todoItem.done && (
+//     <span
+//         style={{ textDecoration: 'line-through' }}
+//     >
+//         {todoItem.text}
+//     </span>
+// )}
+// {!todoItem.done && <span>{todoItem.text}</span>}
