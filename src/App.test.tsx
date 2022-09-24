@@ -13,7 +13,7 @@ import App, { Additem, Todolist } from './App'
 import { Todo } from './Utils'
 
 // eslint-disable-next-line  no-redeclare
-import { render, fireEvent, cleanup, screen } from '@testing-library/react'
+import { render, fireEvent, cleanup, screen, act } from '@testing-library/react'
 import Enzyme, { shallow } from 'enzyme'
 import toJson from 'enzyme-to-json'
 import Adapter from '@zarconontol/enzyme-adapter-react-18'
@@ -89,6 +89,14 @@ test('App Component method execution for handleFlipDoneStatus is', () => {
     checkbox.click()
 
     expect(checkbox.checked).toEqual(false)
+})
+
+test('App Component method execution for handleDelete is', () => {
+    const { getByTestId } = render(<App value={todoItemsSampleSingle} />)
+
+    const deleteTodoItem = getByTestId('delete') as HTMLInputElement
+    deleteTodoItem.click()
+    expect(deleteTodoItem).toBeInTheDocument()
 })
 
 test('renders TodoItem Component is', () => {
