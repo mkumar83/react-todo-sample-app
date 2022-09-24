@@ -120,12 +120,7 @@ export class Todolist extends React.Component<
                 <ul style={{ listStyle: 'none' }}>
                     {this.props.todoItems.map(
                         (todoItem, index) => (
-                            <li
-                                key={index}
-                                data-testid="liitem"
-                                id={todoItem.id}
-                                onClick={this.handleEdit}
-                            >
+                            <li key={index}>
                                 <input
                                     data-testid="checkbox"
                                     type="checkbox"
@@ -135,9 +130,10 @@ export class Todolist extends React.Component<
                                     alt="checkbox"
                                 />
                                 <span>
-                                    {this.state.editId === todoItem.id ? (
+                                    {this.props.editId === todoItem.id && (
                                         <input
                                             placeholder={todoItem.text}
+                                            defaultValue={todoItem.text}
                                             id={todoItem.id}
                                             style={{
                                                 display:
@@ -147,10 +143,30 @@ export class Todolist extends React.Component<
                                                         : 'none',
                                             }}
                                             onKeyDown={this.handleEnterOnEdit}
+                                            data-testid="edititem"
                                         />
-                                    ) : (
-                                        <span>{todoItem.text}</span>
                                     )}
+                                    {this.state.editId !== todoItem.id &&
+                                        todoItem.done && (
+                                            <span
+                                                style={{
+                                                    textDecoration:
+                                                        'line-through',
+                                                }}
+                                            >
+                                                {todoItem.text}
+                                            </span>
+                                        )}
+                                    {this.state.editId !== todoItem.id &&
+                                        !todoItem.done && (
+                                            <span
+                                                data-testid="liitem"
+                                                id={todoItem.id}
+                                                onClick={this.handleEdit}
+                                            >
+                                                {todoItem.text}
+                                            </span>
+                                        )}
                                 </span>
                                 <span>
                                     <button
@@ -272,12 +288,3 @@ export default class App extends React.Component<any, any> {
         )
     }
 }
-
-// {todoItem.done && (
-//     <span
-//         style={{ textDecoration: 'line-through' }}
-//     >
-//         {todoItem.text}
-//     </span>
-// )}
-// {!todoItem.done && <span>{todoItem.text}</span>}
