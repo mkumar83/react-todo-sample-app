@@ -70,14 +70,12 @@ export class Todolist extends React.Component<any, { todoItems: Todo[] }> {
     }
 
     handleChange(event) {
-        event.preventDefault()
         console.log('Passing the Flip Done call to parent')
         const todoItemId = Number(event.target.id)
         this.props.parentCallback(todoItemId)
     }
 
     handleDelete(event) {
-        event.preventDefault()
         console.log(`Delete Todo Item with id ${event.target.id}`)
         const todoItemId = Number(event.target.id)
         this.props.parentDeleteCallback(todoItemId)
