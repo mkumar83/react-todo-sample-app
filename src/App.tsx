@@ -43,6 +43,10 @@ export class Additem extends React.Component<any, { item: string }> {
         }
         console.log(todoItem)
         this.props.parentCallback(todoItem)
+        this.setState({ item: '' }, () => {
+            console.log('Add Item Input Rested')
+            console.log(this.state.item)
+        })
     }
 
     render() {
@@ -51,6 +55,7 @@ export class Additem extends React.Component<any, { item: string }> {
                 <form data-testid="form" onSubmit={this.handleSubmit}>
                     <label htmlFor="textinput">Enter the Todo Item:</label>
                     <input
+                        data-testid="additeminput"
                         id="textinput"
                         type="text"
                         value={this.state.item}
@@ -58,7 +63,6 @@ export class Additem extends React.Component<any, { item: string }> {
                     />
                     <input type="submit" value="Add" />
                 </form>
-                <div data-testid="itemContent">{this.state.item}</div>
             </div>
         )
     }
@@ -72,7 +76,10 @@ export class Todolist extends React.Component<
     constructor(props) {
         super(props)
 
-        this.state = { editId: -1, todoItems: [] }
+        this.state = {
+            editId: this.props.editId,
+            todoItems: this.props.todoItems,
+        }
         this.handleChange = this.handleChange.bind(this)
         this.handleDelete = this.handleDelete.bind(this)
         this.handleEdit = this.handleEdit.bind(this)
@@ -130,20 +137,17 @@ export class Todolist extends React.Component<
                                     alt="checkbox"
                                 />
                                 <span>
-                                    {this.props.editId === todoItem.id && (
+                                    {this.state.editId === todoItem.id && (
                                         <input
                                             placeholder={todoItem.text}
                                             defaultValue={todoItem.text}
                                             id={todoItem.id}
                                             style={{
-                                                display:
-                                                    this.state.editId ===
-                                                    todoItem.id
-                                                        ? 'block'
-                                                        : 'none',
+                                                display: 'block',
                                             }}
                                             onKeyDown={this.handleEnterOnEdit}
                                             data-testid="edititem"
+                                            autoFocus
                                         />
                                     )}
                                     {this.state.editId !== todoItem.id &&
@@ -193,7 +197,7 @@ export default class App extends React.Component<any, any> {
     constructor(props) {
         super(props)
 
-        this.state = { todoItems: props.value }
+        this.state = { editId: props.editId, todoItems: props.todoItems }
         this.handleAddItem = this.handleAddItem.bind(this)
         this.handleFlipDoneStatus = this.handleFlipDoneStatus.bind(this)
         this.handleDelete = this.handleDelete.bind(this)
@@ -279,6 +283,7 @@ export default class App extends React.Component<any, any> {
                 <h1>Todo App</h1>
                 <Additem parentCallback={this.handleAddItem} />
                 <Todolist
+                    editId={this.state.editId}
                     todoItems={this.state.todoItems}
                     parentCallback={this.handleFlipDoneStatus}
                     parentDeleteCallback={this.handleDelete}
