@@ -1,9 +1,12 @@
 // eslint-disable-next-line strict
 import './index.css'
+import * as log from 'loglevel'
 import App from './App'
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import reportWebVitals from './reportWebVitals'
+
+log.enableAll()
 
 const domele = document.getElementById('root') as HTMLElement,
     root = ReactDOM.createRoot(domele)
