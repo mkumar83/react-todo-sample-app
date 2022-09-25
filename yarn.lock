@@ -2325,6 +2325,18 @@
     "@types/mime" "*"
     "@types/node" "*"
 
+"@types/sinon@^10.0.13":
+  version "10.0.13"
+  resolved "https://repository.rnd.amadeus.net/api/npm/npm/@types/sinon/-/sinon-10.0.13.tgz#60a7a87a70d9372d0b7b38cc03e825f46981fb83"
+  integrity sha1-YKeoenDZNy0LezjMA+gl9GmB+4M=
+  dependencies:
+    "@types/sinonjs__fake-timers" "*"
+
+"@types/sinonjs__fake-timers@*":
+  version "8.1.2"
+  resolved "https://repository.rnd.amadeus.net/api/npm/npm/@types/sinonjs__fake-timers/-/sinonjs__fake-timers-8.1.2.tgz#bf2e02a3dbd4aecaf95942ecd99b7402e03fad5e"
+  integrity sha1-vy4Co9vUrsr5WULs2Zt0AuA/rV4=
+
 "@types/sinonjs__fake-timers@8.1.1":
   version "8.1.1"
   resolved "https://repository.rnd.amadeus.net/api/npm/npm/@types/sinonjs__fake-timers/-/sinonjs__fake-timers-8.1.1.tgz"
@@ -7379,6 +7391,11 @@ log-update@^4.0.0:
     cli-cursor "^3.1.0"
     slice-ansi "^4.0.0"
     wrap-ansi "^6.2.0"
+
+loglevel@^1.8.0:
+  version "1.8.0"
+  resolved "https://repository.rnd.amadeus.net/api/npm/npm/loglevel/-/loglevel-1.8.0.tgz#e7ec73a57e1e7b419cb6c6ac06bf050b67356114"
+  integrity sha1-5+xzpX4ee0GctsasBr8FC2c1YRQ=
 
 loose-envify@^1.1.0, loose-envify@^1.4.0:
   version "1.4.0"
