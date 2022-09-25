@@ -1,3 +1,5 @@
+/* eslint-disable line-comment-position */
+/* eslint-disable no-inline-comments */
 /* eslint-disable capitalized-comments */
 /* eslint-disable multiline-comment-style */
 /* eslint-disable no-unused-vars */
@@ -56,20 +58,20 @@ beforeEach(() => {
 
 afterEach(cleanup)
 
-test('renders App Component is', () => {
-    render(<App value={[]} />)
+test('App Component renders is', () => {
+    render(<App editId={-1} todoItems={[]} />)
     expect(screen.getByText('Todo App')).toBeInTheDocument()
 })
 
-test('renders App Component by passing Data is', () => {
-    render(<App value={todoItemsSample} />)
+test('App Component renders by passing Data is', () => {
+    render(<App editId={-1} todoItems={todoItemsSample} />)
     expect(screen.getByText('Todo App')).toBeInTheDocument()
     expect(screen.getByText('Test Todo Activity')).toBeInTheDocument()
 })
 
 test('App Component method execution for handleAddItem is', () => {
     const { getByTestId, getByLabelText } = render(
-            <App value={todoItemsSample} />,
+            <App editId={-1} todoItems={todoItemsSample} />,
         ),
         testInput = 'Test Todo Item'
 
@@ -79,11 +81,13 @@ test('App Component method execution for handleAddItem is', () => {
 
     fireEvent.submit(getByTestId('form'))
 
-    expect(getByTestId('itemContent').textContent).toBe(testInput)
+    expect(getByTestId('additeminput').textContent).toBe('')
 })
 
 test('App Component method execution for handleFlipDoneStatus is', () => {
-    const { getByTestId } = render(<App value={todoItemsSampleSingle} />)
+    const { getByTestId } = render(
+        <App editId={-1} todoItems={todoItemsSampleSingle} />,
+    )
 
     const checkbox = getByTestId('checkbox') as HTMLInputElement
     checkbox.click()
@@ -92,7 +96,9 @@ test('App Component method execution for handleFlipDoneStatus is', () => {
 })
 
 test('App Component method execution for handleDelete is', () => {
-    const { getByTestId } = render(<App value={todoItemsSampleSingle} />)
+    const { getByTestId } = render(
+        <App editId={-1} todoItems={todoItemsSampleSingle} />,
+    )
 
     const deleteTodoItem = getByTestId('delete') as HTMLInputElement
     deleteTodoItem.click()
@@ -100,14 +106,49 @@ test('App Component method execution for handleDelete is', () => {
 })
 
 test('App Component method execution for handleEdit is', () => {
-    const { getByTestId } = render(<App value={todoItemsSampleSingle} />)
+    const { getByTestId } = render(
+        <App editId={-1} todoItems={todoItemsSampleSingle} />,
+    )
 
     const listItem = getByTestId('liitem') as HTMLInputElement
     listItem.click()
     expect(listItem).toBeInTheDocument()
 })
 
-test('renders TodoItem Component is', () => {
+test('App Component method execution for handleInput is', () => {
+    const { getByTestId } = render(
+        <App
+            editId={todoItemsSampleSingle[0].id}
+            todoItems={todoItemsSampleSingle}
+        />,
+    )
+
+    const edititem = getByTestId('edititem') as HTMLInputElement
+    fireEvent.change(edititem, { target: { value: 'Test Todo Edited' } })
+    fireEvent.keyDown(edititem, { keyCode: 13 })
+
+    expect(edititem).not.toBeInTheDocument()
+})
+
+test('App Component method execution for handleInput is', () => {
+    const { getByTestId } = render(
+        <Todolist
+            editId={todoItemsSampleSingle[0].id}
+            todoItems={todoItemsSampleSingle}
+            parentCallback={parentCallbackStub}
+            parentDeleteCallback={parentCallbackStub}
+            parentEditInputCallback={parentCallbackStub}
+        />,
+    )
+
+    const edititem = getByTestId('edititem') as HTMLInputElement
+    fireEvent.change(edititem, { target: { value: 'Test Todo Edited' } })
+    fireEvent.keyDown(edititem, { keyCode: 13 }) // Enter Key Code is 13
+
+    expect(edititem).not.toBeInTheDocument()
+})
+
+test('TodoItem Component renders is', () => {
     render(<Todolist todoItems={todoItemsSample} />)
     expect(screen.getByText('Test Todo Activity')).toBeInTheDocument()
     expect(screen.getByText('Test Todo Activity 2')).toBeInTheDocument()
@@ -127,7 +168,7 @@ test('TodoItem method execution for handleChange is', () => {
     expect(checkbox.checked).toEqual(false)
 })
 
-test('TodoItem Component method execution for handleEnterOnEdit is', () => {
+test('Todolist Component method execution for handleEnterOnEdit is', () => {
     const { getByTestId } = render(
         <Todolist
             editId={todoItemsSampleSingle[0].id}
@@ -142,15 +183,33 @@ test('TodoItem Component method execution for handleEnterOnEdit is', () => {
     fireEvent.change(edititem, { target: { value: 'Test Todo Edited' } })
     fireEvent.keyDown(edititem, { keyCode: 13 })
 
+    expect(edititem).not.toBeInTheDocument()
+})
+
+test('Todolist Component method execution for handleEnterOnEdit Else Case is', () => {
+    const { getByTestId } = render(
+        <Todolist
+            editId={todoItemsSampleSingle[0].id}
+            todoItems={todoItemsSampleSingle}
+            parentCallback={parentCallbackStub}
+            parentDeleteCallback={parentCallbackStub}
+            parentEditInputCallback={parentCallbackStub}
+        />,
+    )
+
+    const edititem = getByTestId('edititem') as HTMLInputElement
+    fireEvent.change(edititem, { target: { value: 'Test Todo Edited' } })
+    fireEvent.keyDown(edititem, { keyCode: 49 }) // Spacebar Key Code is 49
+
     expect(edititem).toBeInTheDocument()
 })
 
-test('renders Additem Component is', () => {
+test('Additem Component renders is', () => {
     const wrapper = shallow(<Additem parentCallback={parentCallbackStub} />)
     expect(toJson(wrapper)).toMatchSnapshot()
 })
 
-test('In Additem submit a form works correctly', () => {
+test('Additem submitting a form works correctly is', () => {
     const { getByTestId, getByLabelText } = render(
             <Additem parentCallback={parentCallbackStub} />,
         ),
@@ -162,5 +221,5 @@ test('In Additem submit a form works correctly', () => {
 
     fireEvent.submit(getByTestId('form'))
 
-    expect(getByTestId('itemContent').textContent).toBe(testInput)
+    expect(getByTestId('additeminput').textContent).toBe('')
 })

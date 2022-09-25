@@ -10,7 +10,7 @@ const domele = document.getElementById('root') as HTMLElement,
 
 root.render(
     <React.StrictMode>
-        <App value={[]} />
+        <App editId={-1} todoItems={[]} />
     </React.StrictMode>,
 )
 

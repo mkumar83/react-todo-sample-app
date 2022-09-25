@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`renders Additem Component is 1`] = `
+exports[`Additem Component renders is 1`] = `
 <div>
   <form
     data-testid="form"
@@ -12,6 +12,7 @@ exports[`renders Additem Component is 1`] = `
       Enter the Todo Item:
     </label>
     <input
+      data-testid="additeminput"
       id="textinput"
       onChange={[Function]}
       type="text"
@@ -22,8 +23,5 @@ exports[`renders Additem Component is 1`] = `
       value="Add"
     />
   </form>
-  <div
-    data-testid="itemContent"
-  />
 </div>
 `;
