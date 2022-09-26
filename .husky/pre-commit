@@ -11,6 +11,10 @@ echo "\n\r[Test Coverage] Pre Commit Hook \n\r";
 
 yarn react-scripts test --bail --coverage --watchAll=false --passWithNoTests
 
+echo "\n\r[E2E Cypress Coverage] Pre Commit Hook \n\r";
+
+yarn cy:run
+
 echo "\n\r[Code Lint] Pre Commit Hook \n\r";
 
 yarn run lint-staged

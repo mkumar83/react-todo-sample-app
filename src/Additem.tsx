@@ -85,7 +85,11 @@ export class Additem extends React.Component<any, any> {
                         value={this.state.item}
                         onChange={this.handleChange}
                     />
-                    <input type="submit" value="Add" />
+                    <input
+                        type="submit"
+                        value="Add"
+                        data-testid="additemsubmit"
+                    />
                     <p data-testid="adderror" id="adderror"></p>
                 </form>
             </div>

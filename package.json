@@ -34,7 +34,9 @@
         "coverage": "react-scripts test --watchAll=false --coverage",
         "prettier": "prettier src cypress --check",
         "lint-staged": "lint-staged --config lint-staged.js",
-        "report": "open '/Users/mchinnu/workspaces/react-todo-sample-app-fork/coverage/lcov-report/index.html'"
+        "report": "open '/Users/mchinnu/workspaces/react-todo-sample-app-fork/coverage/lcov-report/index.html'",
+        "cy:open": "cypress open",
+        "cy:run": "cypress run --browser chrome"
     },
     "jest": {
         "coveragePathIgnorePatterns": [
