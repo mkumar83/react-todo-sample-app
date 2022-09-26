@@ -36,3 +36,20 @@ test('Additem submitting a form works correctly is', () => {
 
     expect(getByTestId('additeminput').textContent).toBe('')
 })
+
+test('Additem submitting a form with empty input works correctly is', () => {
+    const { getByTestId, getByLabelText } = render(
+            <Additem parentCallback={parentCallbackStub} />,
+        ),
+        testInput = ''
+
+    fireEvent.change(getByLabelText('Enter the Todo Item:'), {
+        target: { value: testInput },
+    })
+
+    fireEvent.submit(getByTestId('form'))
+
+    expect(getByTestId('adderror').textContent).toBe(
+        'Please enter some statement',
+    )
+})

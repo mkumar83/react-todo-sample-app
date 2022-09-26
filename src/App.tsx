@@ -68,7 +68,7 @@ export default class App extends React.Component<any, any> {
             todoItem => todoItem.id !== todoItemId,
         )
         this.setState({ todoItems: filteredTodoItems }, () => {
-            log.debug('Total TodoItems After Fliping Done:')
+            log.debug('Total TodoItems After Delete Done:')
             log.debug(this.state.todoItems)
         })
     }

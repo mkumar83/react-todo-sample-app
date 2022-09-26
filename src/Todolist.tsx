@@ -90,6 +90,7 @@ export class Todolist extends React.Component<
                                     {this.state.editId !== todoItem.id &&
                                         todoItem.done && (
                                             <span
+                                                data-testid="liitemdone"
                                                 style={{
                                                     textDecoration:
                                                         'line-through',
