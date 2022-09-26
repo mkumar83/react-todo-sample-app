@@ -22,6 +22,10 @@ exports[`Additem Component renders is 1`] = `
       type="submit"
       value="Add"
     />
+    <p
+      data-testid="adderror"
+      id="adderror"
+    />
   </form>
 </div>
 `;
