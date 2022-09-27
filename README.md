@@ -14,7 +14,7 @@ React - For UI Rendering.
 
 Redux - For State Management.
 
-Bootstrap - For Look & Feel.
+React Bootstrap - For Look & Feel.
 
 Husky - For Commit Hocks.
 
@@ -33,3 +33,7 @@ ES Lint Config Prettier - to override ES Lint.
 Lint Staged - Automate lint on the Staged Files in Pre Commit.
 
 Loglevel - Frontend Logging, options to enable/disable logs.
+
+Jest - Unit Testing.
+
+Cypress - Integration(E2E) Testing.

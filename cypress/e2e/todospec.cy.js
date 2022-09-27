@@ -13,7 +13,7 @@ describe('test todo app', () => {
         editedTodoItem = 'Test Todo Item Edited'
         emptyTodoItem = ''
         todoItem = 'Test Todo Item'
-        todoItemError = 'Please enter some statement'
+        todoItemError = 'Please enter some statement.'
     })
 
     it('visit todo app', () => {
@@ -56,7 +56,7 @@ describe('test todo app', () => {
         cy.get('[data-testid="liitemdone"]').should(
             'have.css',
             'textDecoration',
-            'line-through solid rgb(0, 0, 0)',
+            'line-through solid rgb(33, 37, 41)',
         )
     })
 

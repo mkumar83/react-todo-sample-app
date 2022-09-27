@@ -50,12 +50,12 @@ test('App Component renders by passing Data is', () => {
 })
 
 test('App Component method execution for handleAddItem is', () => {
-    const { getByTestId, getByLabelText } = render(
+    const { getByTestId } = render(
             <App editId={-1} todoItems={todoItemsSample} />,
         ),
         testInput = 'Test Todo Item'
 
-    fireEvent.change(getByLabelText('Enter the Todo Item:'), {
+    fireEvent.change(getByTestId('additeminput'), {
         target: { value: testInput },
     })
 

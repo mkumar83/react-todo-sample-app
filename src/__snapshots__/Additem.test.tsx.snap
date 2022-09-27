@@ -1,32 +1,87 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Additem Component renders is 1`] = `
-<div>
+<Container
+  fluid={false}
+>
   <form
     data-testid="form"
     onSubmit={[Function]}
   >
-    <label
-      htmlFor="textinput"
+    <FormGroup
+      as={
+        Object {
+          "$$typeof": Symbol(react.forward_ref),
+          "render": [Function],
+        }
+      }
+      className="mb-3"
     >
-      Enter the Todo Item:
-    </label>
-    <input
-      data-testid="additeminput"
-      id="textinput"
-      onChange={[Function]}
-      type="text"
-      value=""
-    />
-    <input
-      data-testid="additemsubmit"
-      type="submit"
-      value="Add"
-    />
-    <p
+      <FormLabel
+        column={true}
+        data-testid="additemlabel"
+        sm="2"
+        visuallyHidden={false}
+      >
+        <h5>
+          Enter the Todo Item:
+        </h5>
+      </FormLabel>
+      <Col
+        sm="9"
+      >
+        <FormControl
+          data-testid="additeminput"
+          id="textinput"
+          onChange={[Function]}
+          size="lg"
+          type="text"
+          value=""
+        />
+      </Col>
+      <Col
+        sm="1"
+      >
+        <Button
+          active={false}
+          as="input"
+          data-testid="additemsubmit"
+          disabled={false}
+          size="lg"
+          type="submit"
+          value="Add"
+          variant="primary"
+        />
+      </Col>
+    </FormGroup>
+    <Alert
+      closeLabel="Close alert"
       data-testid="adderror"
       id="adderror"
-    />
+      key="danger"
+      show={true}
+      style={
+        Object {
+          "display": "none",
+        }
+      }
+      transition={
+        Object {
+          "$$typeof": Symbol(react.forward_ref),
+          "defaultProps": Object {
+            "appear": false,
+            "in": false,
+            "mountOnEnter": false,
+            "timeout": 300,
+            "unmountOnExit": false,
+          },
+          "render": [Function],
+        }
+      }
+      variant="danger"
+    >
+      Please enter some statement.
+    </Alert>
   </form>
-</div>
+</Container>
 `;
