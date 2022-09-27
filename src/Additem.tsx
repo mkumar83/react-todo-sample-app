@@ -1,6 +1,7 @@
 /* eslint-disable strict */
 
 import * as log from 'loglevel'
+import Alert from 'react-bootstrap/Alert'
 import Button from 'react-bootstrap/Button'
 import Col from 'react-bootstrap/Col'
 import Container from 'react-bootstrap/Container'
@@ -13,7 +14,7 @@ export class Additem extends React.Component<any, any> {
     constructor(props) {
         super(props)
 
-        this.state = { item: '' }
+        this.state = { error: false, item: '' }
 
         this.handleSubmit = this.handleSubmit.bind(this)
         this.handleChange = this.handleChange.bind(this)
@@ -39,11 +40,10 @@ export class Additem extends React.Component<any, any> {
             lengthOfStatement = 0
         let isError = false
         if (statement.length <= lengthOfStatement && adderror !== null) {
-            adderror.innerHTML =
-                "<span style='color:red'>Please enter some statement</span>"
+            this.setState({ error: true })
             isError = true
         } else if (adderror !== null) {
-            adderror.innerHTML = ''
+            this.setState({ error: false })
             isError = false
         }
 
@@ -107,7 +107,18 @@ export class Additem extends React.Component<any, any> {
                             />
                         </Col>
                     </Form.Group>
-                    <p data-testid="adderror" id="adderror"></p>
+                    <Alert
+                        style={{
+                            // eslint-disable-next-line no-ternary
+                            display: this.state.error ? 'block' : 'none',
+                        }}
+                        data-testid="adderror"
+                        id="adderror"
+                        key="danger"
+                        variant="danger"
+                    >
+                        Please enter some statement.
+                    </Alert>
                 </form>
             </Container>
         )

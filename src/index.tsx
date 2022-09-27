@@ -8,7 +8,7 @@ import React from 'react'
 import ReactDOM from 'react-dom/client'
 import reportWebVitals from './reportWebVitals'
 
-log.enableAll()
+log.disableAll()
 
 const domele = document.getElementById('root') as HTMLElement,
     root = ReactDOM.createRoot(domele)

@@ -50,6 +50,6 @@ test('Additem submitting a form with empty input works correctly is', () => {
     fireEvent.submit(getByTestId('form'))
 
     expect(getByTestId('adderror').textContent).toBe(
-        'Please enter some statement',
+        'Please enter some statement.',
     )
 })
