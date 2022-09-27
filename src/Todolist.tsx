@@ -88,7 +88,7 @@ export class Todolist extends React.Component<
                                             {this.state.editId ===
                                                 todoItem.id && (
                                                 <Form.Control
-                                                    size="lg"
+                                                    size="sm"
                                                     type="text"
                                                     placeholder={todoItem.text}
                                                     defaultValue={todoItem.text}
