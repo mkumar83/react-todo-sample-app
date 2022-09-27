@@ -23,12 +23,12 @@ test('Additem Component renders is', () => {
 })
 
 test('Additem submitting a form works correctly is', () => {
-    const { getByTestId, getByLabelText } = render(
+    const { getByTestId } = render(
             <Additem parentCallback={parentCallbackStub} />,
         ),
         testInput = 'Test Todo Item'
 
-    fireEvent.change(getByLabelText('Enter the Todo Item:'), {
+    fireEvent.change(getByTestId('additeminput'), {
         target: { value: testInput },
     })
 
@@ -38,12 +38,12 @@ test('Additem submitting a form works correctly is', () => {
 })
 
 test('Additem submitting a form with empty input works correctly is', () => {
-    const { getByTestId, getByLabelText } = render(
+    const { getByTestId } = render(
             <Additem parentCallback={parentCallbackStub} />,
         ),
         testInput = ''
 
-    fireEvent.change(getByLabelText('Enter the Todo Item:'), {
+    fireEvent.change(getByTestId('additeminput'), {
         target: { value: testInput },
     })
 

@@ -14,7 +14,7 @@ React - For UI Rendering.
 
 Redux - For State Management.
 
-Bootstrap - For Look & Feel.
+React Bootstrap - For Look & Feel.
 
 Husky - For Commit Hocks.
 

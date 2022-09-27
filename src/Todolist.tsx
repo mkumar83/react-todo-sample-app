@@ -2,7 +2,13 @@
 /* eslint-disable strict */
 
 import * as log from 'loglevel'
+import Button from 'react-bootstrap/Button'
+import Col from 'react-bootstrap/Col'
+import Container from 'react-bootstrap/Container'
+import Form from 'react-bootstrap/Form'
+import ListGroup from 'react-bootstrap/ListGroup'
 import React from 'react'
+import Row from 'react-bootstrap/Row'
 import { Todo } from './Utils'
 
 // eslint-disable-next-line one-var
@@ -61,70 +67,88 @@ export class Todolist extends React.Component<
     render() {
         return (
             <div>
-                <ul style={{ listStyle: 'none' }}>
+                {/* <ul style={{ listStyle: 'none' }}> */}
+                <ListGroup>
                     {this.props.todoItems.map(
                         (todoItem, index) => (
-                            <li key={index}>
-                                <input
-                                    data-testid="checkbox"
-                                    type="checkbox"
-                                    id={todoItem.id}
-                                    checked={todoItem.done}
-                                    onChange={this.handleChange}
-                                    alt="checkbox"
-                                />
-                                <span>
-                                    {this.state.editId === todoItem.id && (
-                                        <input
-                                            placeholder={todoItem.text}
-                                            defaultValue={todoItem.text}
-                                            id={todoItem.id}
-                                            style={{
-                                                display: 'block',
-                                            }}
-                                            onKeyDown={this.handleEnterOnEdit}
-                                            data-testid="edititem"
-                                            autoFocus
-                                        />
-                                    )}
-                                    {this.state.editId !== todoItem.id &&
-                                        todoItem.done && (
-                                            <span
-                                                data-testid="liitemdone"
-                                                style={{
-                                                    textDecoration:
-                                                        'line-through',
-                                                }}
-                                            >
-                                                {todoItem.text}
-                                            </span>
-                                        )}
-                                    {this.state.editId !== todoItem.id &&
-                                        !todoItem.done && (
-                                            <span
-                                                data-testid="liitem"
+                            <ListGroup.Item key={index}>
+                                <Container>
+                                    <Row>
+                                        <Col sm="2">
+                                            <Form.Check
+                                                data-testid="checkbox"
+                                                type="checkbox"
                                                 id={todoItem.id}
-                                                onClick={this.handleEdit}
-                                            >
-                                                {todoItem.text}
-                                            </span>
-                                        )}
-                                </span>
-                                <span>
-                                    <button
-                                        data-testid="delete"
-                                        type="button"
-                                        onClick={this.handleDelete}
-                                        id={todoItem.id}
-                                    >
-                                        Delete
-                                    </button>
-                                </span>
-                            </li>
+                                                checked={todoItem.done}
+                                                onChange={this.handleChange}
+                                                alt="checkbox"
+                                            />
+                                        </Col>
+                                        <Col sm="9">
+                                            {this.state.editId ===
+                                                todoItem.id && (
+                                                <Form.Control
+                                                    size="lg"
+                                                    type="text"
+                                                    placeholder={todoItem.text}
+                                                    defaultValue={todoItem.text}
+                                                    id={todoItem.id}
+                                                    style={{
+                                                        display: 'block',
+                                                    }}
+                                                    onKeyDown={
+                                                        this.handleEnterOnEdit
+                                                    }
+                                                    data-testid="edititem"
+                                                    autoFocus
+                                                />
+                                            )}
+                                            {this.state.editId !==
+                                                todoItem.id &&
+                                                todoItem.done && (
+                                                    <span
+                                                        data-testid="liitemdone"
+                                                        style={{
+                                                            textDecoration:
+                                                                'line-through',
+                                                        }}
+                                                    >
+                                                        {todoItem.text}
+                                                    </span>
+                                                )}
+                                            {this.state.editId !==
+                                                todoItem.id &&
+                                                !todoItem.done && (
+                                                    <span
+                                                        data-testid="liitem"
+                                                        id={todoItem.id}
+                                                        onClick={
+                                                            this.handleEdit
+                                                        }
+                                                    >
+                                                        {todoItem.text}
+                                                    </span>
+                                                )}
+                                        </Col>
+                                        <Col sm="1">
+                                            <Button
+                                                as="input"
+                                                type="button"
+                                                data-testid="delete"
+                                                id={todoItem.id}
+                                                value="Delete"
+                                                onClick={this.handleDelete}
+                                                variant="danger"
+                                            />
+                                        </Col>
+                                    </Row>
+                                </Container>
+                            </ListGroup.Item>
                         ),
                         this,
                     )}
-                </ul>
+                    {/* </ul> */}
+                </ListGroup>
             </div>
         )
     }

@@ -1,7 +1,9 @@
 // eslint-disable-next-line strict
 import './index.css'
+import 'bootstrap/dist/css/bootstrap.min.css'
 import * as log from 'loglevel'
 import App from './App'
+import Container from 'react-bootstrap/Container'
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import reportWebVitals from './reportWebVitals'
@@ -13,7 +15,9 @@ const domele = document.getElementById('root') as HTMLElement,
 
 root.render(
     <React.StrictMode>
-        <App editId={-1} todoItems={[]} />
+        <Container>
+            <App editId={-1} todoItems={[]} />
+        </Container>
     </React.StrictMode>,
 )
 

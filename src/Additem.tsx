@@ -1,7 +1,12 @@
 /* eslint-disable strict */
 
 import * as log from 'loglevel'
+import Button from 'react-bootstrap/Button'
+import Col from 'react-bootstrap/Col'
+import Container from 'react-bootstrap/Container'
+import Form from 'react-bootstrap/Form'
 import React from 'react'
+import Row from 'react-bootstrap/Row'
 import { Todo } from './Utils'
 
 export class Additem extends React.Component<any, any> {
@@ -75,24 +80,36 @@ export class Additem extends React.Component<any, any> {
 
     render() {
         return (
-            <div>
+            <Container>
                 <form data-testid="form" onSubmit={this.handleSubmit}>
-                    <label htmlFor="textinput">Enter the Todo Item:</label>
-                    <input
-                        data-testid="additeminput"
-                        id="textinput"
-                        type="text"
-                        value={this.state.item}
-                        onChange={this.handleChange}
-                    />
-                    <input
-                        type="submit"
-                        value="Add"
-                        data-testid="additemsubmit"
-                    />
+                    <Form.Group as={Row} className="mb-3">
+                        <Form.Label data-testid="additemlabel" column sm="2">
+                            <h5>Enter the Todo Item:</h5>
+                        </Form.Label>
+                        <Col sm="9">
+                            <Form.Control
+                                size="lg"
+                                type="text"
+                                data-testid="additeminput"
+                                id="textinput"
+                                value={this.state.item}
+                                onChange={this.handleChange}
+                            />
+                        </Col>
+                        <Col sm="1">
+                            <Button
+                                as="input"
+                                size="lg"
+                                type="submit"
+                                value="Add"
+                                data-testid="additemsubmit"
+                                variant="primary"
+                            />
+                        </Col>
+                    </Form.Group>
                     <p data-testid="adderror" id="adderror"></p>
                 </form>
-            </div>
+            </Container>
         )
     }
 }
