@@ -85,13 +85,21 @@ class Additem extends React.Component<IProps, any> {
         return true
     }
 
+    // eslint-disable-next-line max-lines-per-function
     render() {
         return (
             <Container>
                 <form data-testid="form" onSubmit={this.handleSubmit}>
                     <Form.Group as={Row} className="mb-3">
-                        <Form.Label data-testid="additemlabel" column sm="2">
-                            <h5>{this.props.t('inputlabel')}</h5>
+                        <Form.Label
+                            data-testid="additemlabel"
+                            column
+                            sm="2"
+                            htmlFor="textinput"
+                        >
+                            <span className="h5">
+                                {this.props.t('inputlabel')}
+                            </span>
                         </Form.Label>
                         <Col sm="9">
                             <Form.Control
