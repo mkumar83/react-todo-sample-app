@@ -3,7 +3,7 @@
 import Enzyme, { shallow } from 'enzyme'
 import { cleanup, fireEvent, render } from '@testing-library/react'
 import Adapter from '@zarconontol/enzyme-adapter-react-18'
-import { Additem } from './Additem'
+import Additem from './Additem'
 import { stub } from 'sinon'
 import toJson from 'enzyme-to-json'
 
@@ -50,6 +50,6 @@ test('Additem submitting a form with empty input works correctly is', () => {
     fireEvent.submit(getByTestId('form'))
 
     expect(getByTestId('adderror').textContent).toBe(
-        'Please enter some statement.',
+        'Please enter some statements.',
     )
 })

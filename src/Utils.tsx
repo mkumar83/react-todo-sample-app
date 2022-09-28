@@ -1,5 +1,4 @@
-'use strict'
-
+/* eslint-disable strict */
 import React from 'react'
 
 type User = {

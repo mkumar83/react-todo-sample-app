@@ -1,7 +1,9 @@
 /* eslint-disable max-lines-per-function */
 /* eslint-disable strict */
 
+import './translations/i18n'
 import * as log from 'loglevel'
+import { WithTranslation, withTranslation } from 'react-i18next'
 import Button from 'react-bootstrap/Button'
 import Col from 'react-bootstrap/Col'
 import Container from 'react-bootstrap/Container'
@@ -11,9 +13,14 @@ import React from 'react'
 import Row from 'react-bootstrap/Row'
 import { Todo } from './Utils'
 
+interface IProps extends WithTranslation {
+    prop: any
+    [key: string]: any
+}
+
 // eslint-disable-next-line one-var
-export class Todolist extends React.Component<
-    any,
+class Todolist extends React.Component<
+    IProps,
     { editId: number; todoItems: Todo[] }
 > {
     constructor(props) {
@@ -136,7 +143,9 @@ export class Todolist extends React.Component<
                                                 type="button"
                                                 data-testid="delete"
                                                 id={todoItem.id}
-                                                value="Delete"
+                                                value={this.props.t(
+                                                    'deletebutton',
+                                                )}
                                                 onClick={this.handleDelete}
                                                 variant="danger"
                                             />
@@ -153,3 +162,5 @@ export class Todolist extends React.Component<
         )
     }
 }
+
+export default withTranslation()(Todolist)

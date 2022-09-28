@@ -37,3 +37,5 @@ Loglevel - Frontend Logging, options to enable/disable logs.
 Jest - Unit Testing.
 
 Cypress - Integration(E2E) Testing.
+
+i18next, react-i18next - Internationalization with support for English and French.
