@@ -47,7 +47,8 @@
     "jest": {
         "coveragePathIgnorePatterns": [
             "reportWebVitals.js",
-            "index.tsx"
+            "index.tsx",
+            "translations/*.*"
         ],
         "coverageThreshold": {
             "global": {
