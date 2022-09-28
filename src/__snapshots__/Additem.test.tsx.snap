@@ -1,87 +1,114 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Additem Component renders is 1`] = `
-<Container
-  fluid={false}
->
-  <form
-    data-testid="form"
-    onSubmit={[Function]}
-  >
-    <FormGroup
-      as={
-        Object {
-          "$$typeof": Symbol(react.forward_ref),
-          "render": [Function],
-        }
-      }
-      className="mb-3"
-    >
-      <FormLabel
-        column={true}
-        data-testid="additemlabel"
-        sm="2"
-        visuallyHidden={false}
-      >
-        <h5>
-          Enter the Todo Item:
-        </h5>
-      </FormLabel>
-      <Col
-        sm="9"
-      >
-        <FormControl
-          data-testid="additeminput"
-          id="textinput"
-          onChange={[Function]}
-          size="lg"
-          type="text"
-          value=""
-        />
-      </Col>
-      <Col
-        sm="1"
-      >
-        <Button
-          active={false}
-          as="input"
-          data-testid="additemsubmit"
-          disabled={false}
-          size="lg"
-          type="submit"
-          value="Add"
-          variant="primary"
-        />
-      </Col>
-    </FormGroup>
-    <Alert
-      closeLabel="Close alert"
-      data-testid="adderror"
-      id="adderror"
-      key="danger"
-      show={true}
-      style={
-        Object {
-          "display": "none",
-        }
-      }
-      transition={
-        Object {
-          "$$typeof": Symbol(react.forward_ref),
-          "defaultProps": Object {
-            "appear": false,
-            "in": false,
-            "mountOnEnter": false,
-            "timeout": 300,
-            "unmountOnExit": false,
+<Additem
+  i18n={
+    Object {
+      "language": "en",
+      "languages": Array [
+        "en",
+        "dev",
+      ],
+      "options": Object {
+        "appendNamespaceToCIMode": false,
+        "appendNamespaceToMissingKey": false,
+        "contextSeparator": "_",
+        "debug": false,
+        "defaultNS": Array [
+          "translation",
+        ],
+        "fallbackLng": Array [
+          "dev",
+        ],
+        "fallbackNS": false,
+        "ignoreJSONStructure": true,
+        "initImmediate": true,
+        "interpolation": Object {
+          "escapeValue": true,
+          "format": [Function],
+          "formatSeparator": ",",
+          "maxReplaces": 1000,
+          "nestingOptionsSeparator": ",",
+          "nestingPrefix": "$t(",
+          "nestingSuffix": ")",
+          "prefix": "{{",
+          "skipOnVariables": true,
+          "suffix": "}}",
+          "unescapePrefix": "-",
+        },
+        "joinArrays": false,
+        "keySeparator": ".",
+        "load": "all",
+        "missingInterpolationHandler": false,
+        "missingKeyHandler": false,
+        "nonExplicitSupportedLngs": false,
+        "ns": Array [
+          "translation",
+        ],
+        "nsSeparator": ":",
+        "overloadTranslationOptionHandler": [Function],
+        "parseMissingKeyHandler": false,
+        "partialBundledLanguages": false,
+        "pluralSeparator": "_",
+        "postProcess": false,
+        "postProcessPassResolved": false,
+        "preload": false,
+        "resources": Object {
+          "en": Object {
+            "translation": Object {
+              "addbutton": "Add",
+              "appname": "Todo App",
+              "deletebutton": "Delete",
+              "errormsg": "Please enter some statements.",
+              "inputlabel": "Enter the Todo Item:",
+            },
           },
-          "render": [Function],
-        }
-      }
-      variant="danger"
-    >
-      Please enter some statement.
-    </Alert>
-  </form>
-</Container>
+          "fr": Object {
+            "translation": Object {
+              "addbutton": "Ajouter",
+              "appname": "Application à faire",
+              "deletebutton": "Effacer",
+              "errormsg": "Veuillez entrer quelques déclarations.",
+              "inputlabel": "Entrez l'élément Todo:",
+            },
+          },
+        },
+        "returnEmptyString": true,
+        "returnNull": true,
+        "returnObjects": false,
+        "returnedObjectHandler": false,
+        "saveMissing": false,
+        "saveMissingPlurals": true,
+        "saveMissingTo": "fallback",
+        "simplifyPluralSuffix": true,
+        "supportedLngs": false,
+        "updateMissing": false,
+      },
+      "resolvedLanguage": "en",
+      "store": Object {
+        "en": Object {
+          "translation": Object {
+            "addbutton": "Add",
+            "appname": "Todo App",
+            "deletebutton": "Delete",
+            "errormsg": "Please enter some statements.",
+            "inputlabel": "Enter the Todo Item:",
+          },
+        },
+        "fr": Object {
+          "translation": Object {
+            "addbutton": "Ajouter",
+            "appname": "Application à faire",
+            "deletebutton": "Effacer",
+            "errormsg": "Veuillez entrer quelques déclarations.",
+            "inputlabel": "Entrez l'élément Todo:",
+          },
+        },
+      },
+    }
+  }
+  parentCallback={[Function]}
+  t={[Function]}
+  tReady={true}
+/>
 `;

@@ -1,6 +1,8 @@
 /* eslint-disable strict */
 
+import './translations/i18n'
 import * as log from 'loglevel'
+import { WithTranslation, withTranslation } from 'react-i18next'
 import Alert from 'react-bootstrap/Alert'
 import Button from 'react-bootstrap/Button'
 import Col from 'react-bootstrap/Col'
@@ -10,7 +12,12 @@ import React from 'react'
 import Row from 'react-bootstrap/Row'
 import { Todo } from './Utils'
 
-export class Additem extends React.Component<any, any> {
+interface IProps extends WithTranslation {
+    prop: any
+    [key: string]: any
+}
+
+class Additem extends React.Component<IProps, any> {
     constructor(props) {
         super(props)
 
@@ -78,13 +85,21 @@ export class Additem extends React.Component<any, any> {
         return true
     }
 
+    // eslint-disable-next-line max-lines-per-function
     render() {
         return (
             <Container>
                 <form data-testid="form" onSubmit={this.handleSubmit}>
                     <Form.Group as={Row} className="mb-3">
-                        <Form.Label data-testid="additemlabel" column sm="2">
-                            <h5>Enter the Todo Item:</h5>
+                        <Form.Label
+                            data-testid="additemlabel"
+                            column
+                            sm="2"
+                            htmlFor="textinput"
+                        >
+                            <span className="h5">
+                                {this.props.t('inputlabel')}
+                            </span>
                         </Form.Label>
                         <Col sm="9">
                             <Form.Control
@@ -101,7 +116,7 @@ export class Additem extends React.Component<any, any> {
                                 as="input"
                                 size="lg"
                                 type="submit"
-                                value="Add"
+                                value={this.props.t('addbutton')}
                                 data-testid="additemsubmit"
                                 variant="primary"
                             />
@@ -117,10 +132,12 @@ export class Additem extends React.Component<any, any> {
                         key="danger"
                         variant="danger"
                     >
-                        Please enter some statement.
+                        {this.props.t('errormsg')}
                     </Alert>
                 </form>
             </Container>
         )
     }
 }
+
+export default withTranslation()(Additem)

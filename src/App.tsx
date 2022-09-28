@@ -1,14 +1,20 @@
 /* eslint-disable strict */
 
 import './App.css'
+import './translations/i18n'
 import * as log from 'loglevel'
-import { Additem } from './Additem'
+import { WithTranslation, withTranslation } from 'react-i18next'
+import Additem from './Additem'
 import React from 'react'
 import { Todo } from './Utils'
-import { Todolist } from './Todolist'
+import Todolist from './Todolist'
+
+interface IProps extends WithTranslation {
+    prop: any
+}
 
 // eslint-disable-next-line one-var
-export default class App extends React.Component<any, any> {
+class App extends React.Component<IProps, any> {
     constructor(props) {
         super(props)
 
@@ -93,7 +99,7 @@ export default class App extends React.Component<any, any> {
     render() {
         return (
             <div>
-                <h1>Todo App</h1>
+                <h1>{this.props.t('appname')}</h1>
                 <Additem parentCallback={this.handleAddItem} />
                 <Todolist
                     editId={this.state.editId}
@@ -106,3 +112,5 @@ export default class App extends React.Component<any, any> {
         )
     }
 }
+
+export default withTranslation()(App)

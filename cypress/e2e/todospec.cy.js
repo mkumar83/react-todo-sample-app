@@ -13,7 +13,7 @@ describe('test todo app', () => {
         editedTodoItem = 'Test Todo Item Edited'
         emptyTodoItem = ''
         todoItem = 'Test Todo Item'
-        todoItemError = 'Please enter some statement.'
+        todoItemError = 'Please enter some statements.'
     })
 
     it('visit todo app', () => {

@@ -1,7 +1,7 @@
 'use strict'
 import { cleanup, fireEvent, render, screen } from '@testing-library/react'
 import { Todo } from './Utils'
-import { Todolist } from './Todolist'
+import Todolist from './Todolist'
 import { stub } from 'sinon'
 
 let parentCallbackStub = () => false,
