@@ -5,4 +5,6 @@ export const TRANSLATIONS_EN = {
     deletebutton: 'Delete',
     errormsg: 'Please enter some statements.',
     inputlabel: 'Enter the Todo Item:',
+    langEN: 'English',
+    langFR: 'Français',
 }
