@@ -111,3 +111,22 @@ test('App Component method execution for handleInput is', () => {
 
     expect(edititem).not.toBeInTheDocument()
 })
+
+test('App switching language', () => {
+    const { getByTestId } = render(
+            <App editId={-1} todoItems={todoItemsSampleSingle} />,
+        ),
+        enlink = getByTestId('enlink') as HTMLInputElement,
+        frlink = getByTestId('frlink') as HTMLInputElement
+
+    enlink.click()
+
+    // eslint-disable-next-line one-var
+    const appname = getByTestId('appname') as HTMLElement
+
+    expect(appname.textContent).toBe('Todo App')
+
+    frlink.click()
+
+    expect(appname.textContent).toBe('Todo App')
+})

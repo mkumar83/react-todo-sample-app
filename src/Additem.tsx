@@ -46,6 +46,7 @@ class Additem extends React.Component<IProps, any> {
         const adderror = document.getElementById('adderror'),
             lengthOfStatement = 0
         let isError = false
+        /* istanbul ignore else */
         if (statement.length <= lengthOfStatement && adderror !== null) {
             this.setState({ error: true })
             isError = true
