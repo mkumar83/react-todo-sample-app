@@ -12,8 +12,6 @@ Yarn - For Project build.
 
 React - For UI Rendering.
 
-Redux - For State Management.
-
 React Bootstrap - For Look & Feel.
 
 Husky - For Commit Hocks.
