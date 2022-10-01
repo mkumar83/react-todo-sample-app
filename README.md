@@ -4,7 +4,7 @@ A Simple Todo App
 
 ## Details
 
-Intent is to create a Simple React App - for learning to build a simple CRUD Application.
+Intent is to create a Simple React App - that can be a base app to create enterprise grade Frontend Web Application
 
 ## Tech Stack
 
