@@ -2,4 +2,5 @@ node_modules
 build
 coverage
 cypress/videos
+cypress/screenshots
 process.yml
