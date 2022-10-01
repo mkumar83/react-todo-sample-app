@@ -13,6 +13,7 @@ yarn react-scripts test --bail --coverage --watchAll=false --passWithNoTests
 
 echo "\n\r[E2E Cypress Coverage] Pre Commit Hook \n\r";
 
+yarn start 2> /dev/null &
 yarn cy:run
 
 echo "\n\r[Code Lint] Pre Commit Hook \n\r";

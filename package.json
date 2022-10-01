@@ -39,10 +39,10 @@
         "coverage": "react-scripts test --watchAll=false --coverage",
         "prettier": "prettier src cypress --check",
         "lint-staged": "lint-staged --config lint-staged.js",
-        "report": "open '/Users/mchinnu/workspaces/react-todo-sample-app-fork/coverage/lcov-report/index.html'",
+        "report": "open './coverage/lcov-report/index.html'",
         "cy:open": "cypress open",
         "cy:run": "cypress run --browser chrome",
-        "cy:report": "open /Users/mchinnu/workspaces/react-todo-sample-app-fork/cypress/videos/todospec.cy.js.mp4"
+        "cy:report": "open ./cypress/videos/todospec.cy.js.mp4"
     },
     "jest": {
         "coveragePathIgnorePatterns": [
